@@ -1,0 +1,49 @@
+.transaction-sec {
+  background: $color-f2f2f2;
+  border: 1px solid $color-f2f2f2;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 397px;
+  padding: 32px;
+
+  .title {
+    color: $black-333;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  .info {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+
+    .icon {
+      height: 40px;
+      margin-bottom: 24px;
+      width: 40px;
+    }
+
+    .title {
+      color: $black-333;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: $black-333;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 8px;
+      max-width: 427px;
+      opacity: 0.5;
+      text-align: center;
+    }
+  }
+}

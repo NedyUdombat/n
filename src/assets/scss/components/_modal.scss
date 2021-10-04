@@ -1,0 +1,50 @@
+.modal {
+  align-items: center;
+  background: $white;
+  border: 0;
+  border-radius: 24px;
+  bottom: auto;
+  box-sizing: border-box;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  left: 50%;
+  outline: none;
+  overflow: auto;
+  padding: 30px;
+  position: absolute;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 736px;
+
+  .modal-content {
+    border: 0;
+
+    .close-btn-section {
+      display: flex;
+      justify-content: flex-end;
+
+      .close-btn {
+        align-items: center;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        display: block;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 18px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .modal {
+    border-radius: 8px;
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+  }
+}

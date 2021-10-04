@@ -1,0 +1,68 @@
+@font-face {
+  font-family: avertaThin;
+  src: url('../../../assets/font/Averta/AvertaStd-Thin.ttf');
+}
+
+@font-face {
+  font-family: avertaLight;
+  src: url('../../../assets/font/Averta/AvertaStd-Light.ttf');
+}
+
+@font-face {
+  font-family: avertaLightItalic;
+  src: url('../../../assets/font/Averta/AvertaStd-LightItalic.ttf');
+}
+
+@font-face {
+  font-family: avertaRegular;
+  src: url('../../../assets/font/Averta/AvertaStd-Regular.ttf');
+}
+
+@font-face {
+  font-family: avertaBold;
+  src: url('../../../assets/font/Averta/AvertaStd-Bold.ttf');
+}
+
+@font-face {
+  font-family: avertaSemiBold;
+  src: url('../../../assets/font/Averta/AvertaStd-Semibold.ttf');
+}
+
+@font-face {
+  font-family: avertaExtraBold;
+  src: url('../../../assets/font/Averta/AvertaStd-ExtraBold.ttf');
+}
+
+@import './variables';
+
+html {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: avertaRegular;
+    margin: 0;
+  }
+
+  .btn {
+    align-items: center;
+    border-radius: 6px;
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  .btn-green {
+    background: $green;
+
+    a {
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

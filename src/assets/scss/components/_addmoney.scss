@@ -1,0 +1,330 @@
+.add-money-section {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 142px;
+
+  .transfer-activity-card {
+    border: 1px solid $color-eaeaea;
+    border-radius: 16px;
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 40px;
+    width: 638px;
+
+    .transfer-activity-card-title {
+      color: $black-333;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .amount-transfer-form {
+      .saving-prompt-section {
+        background: $color-fef6cf;
+        border-radius: 8px;
+        display: flex;
+        height: 64px;
+        margin-bottom: 16px;
+        padding: 8px 16px;
+
+        .icon {
+          height: 24px;
+          width: 24px;
+        }
+
+        .text {
+          color: $color-ec9b40;
+          font-size: 14px;
+          line-height: 24px;
+          margin-left: 8px;
+
+          .modal-trigger {
+            color: $color-ec9b40;
+            font-weight: 700;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .transfer-location {
+        margin-top: 24px;
+
+        .form-label {
+          margin-bottom: 16px;
+        }
+      }
+
+      .submit-btn-section {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 40px;
+
+        .submit-btn {
+          background: $green;
+          border-radius: 6px;
+          color: $white;
+          font-size: 16px;
+          font-weight: 600;
+          height: 48px;
+          line-height: 24px;
+          width: 152px;
+
+          &.disabled {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .pin-form {
+      .form-control-group {
+        .form-label-subtitle {
+          color: $black-333;
+          font-size: 16px;
+          line-height: 24px;
+          margin-bottom: 40px;
+        }
+
+        .wallet-balance-amount {
+          color: $black-333;
+          font-size: 12px;
+          line-height: 24px;
+          margin-top: 9px;
+
+          .value {
+            color: $green;
+            font-family: avertaBold;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 24px;
+          }
+        }
+      }
+
+      .submit-btn-section {
+        display: block;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        .bottom-btns {
+          display: flex;
+          justify-content: space-between;
+
+          .submit-btn {
+            background: $green;
+            border-radius: 6px;
+            color: $white;
+            font-size: 16px;
+            font-weight: 600;
+            height: 48px;
+            line-height: 24px;
+            min-width: 152px;
+
+            &.disabled {
+              opacity: 0.5;
+            }
+          }
+
+          .cancel-btn {
+            background: $white;
+            border: 1px solid $black-999;
+            border-radius: 6px;
+            color: $black-888;
+            font-size: 16px;
+            font-weight: 600;
+            height: 48px;
+            line-height: 24px;
+            width: 152px;
+
+            &.disabled {
+              opacity: 0.5;
+            }
+          }
+        }
+
+        .resend-btn {
+          background: $white;
+          border-radius: 6px;
+          color: $green;
+          font-size: 16px;
+          font-weight: 600;
+          height: 48px;
+          line-height: 24px;
+          margin-bottom: 24px;
+          width: 100%;
+
+          .icon {
+            height: 24px;
+            margin-right: 8px;
+            width: 24px;
+          }
+
+          &.disabled {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .bank-detials-form {
+      .transfer-location {
+        margin-top: 24px;
+
+        .form-label {
+          color: $black-333;
+          font-size: 12px;
+          line-height: 16px;
+          margin-bottom: 30px;
+        }
+      }
+
+      .submit-btn-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        .submit-btn {
+          background: $green;
+          border-radius: 6px;
+          color: $white;
+          font-size: 16px;
+          font-weight: 600;
+          height: 48px;
+          line-height: 24px;
+          width: 152px;
+
+          &.disabled {
+            opacity: 0.5;
+          }
+        }
+
+        .cancel-btn {
+          background: $white;
+          border: 1px solid $black-999;
+          border-radius: 6px;
+          color: $black-888;
+          font-size: 16px;
+          font-weight: 600;
+          height: 48px;
+          line-height: 24px;
+          width: 152px;
+
+          &.disabled {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .add-money-section {
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 100px;
+
+    .transfer-activity-card {
+      padding: 20px;
+
+      .transfer-activity-card-title {
+        margin-bottom: 20px;
+      }
+
+      .amount-transfer-form {
+        .submit-btn-section {
+          .submit-btn {
+            width: 100%;
+          }
+        }
+      }
+
+      .pin-form {
+        .form-control-group {
+          .form-label-subtitle {
+            margin-bottom: 20px;
+          }
+
+          .pincode-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 135px;
+
+            .pincode-input-text {
+              display: block;
+              flex: 1 1;
+              max-width: 64px;
+            }
+          }
+        }
+
+        .submit-btn-section {
+          display: block;
+          margin-top: 20px;
+
+          .bottom-btns {
+            display: flex;
+            flex-direction: column-reverse;
+
+            .submit-btn {
+              margin-bottom: 10px;
+              min-width: 100%;
+            }
+
+            .cancel-btn {
+              width: 100%;
+            }
+          }
+
+          .resend-btn {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 20px;
+
+            .icon {
+              height: 20px;
+              width: 20px;
+            }
+          }
+        }
+      }
+
+      .bank-detials-form {
+        .transfer-location {
+          margin-top: 24px;
+
+          .form-control-group {
+            .form-check {
+              margin-bottom: 10px;
+            }
+          }
+
+          .form-label {
+            color: $black-333;
+            font-size: 12px;
+            line-height: 16px;
+            margin-bottom: 30px;
+          }
+        }
+
+        .submit-btn-section {
+          display: flex;
+          flex-direction: column-reverse;
+          margin-top: 20px;
+
+          .submit-btn {
+            margin-bottom: 10px;
+            width: 100%;
+          }
+
+          .cancel-btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

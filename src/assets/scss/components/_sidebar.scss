@@ -1,0 +1,136 @@
+.sidebar-container {
+  background-color: $white;
+  border-right: 1px solid $color-f6f6f6;
+  height: 100vh;
+  max-width: 232px;
+  position: fixed;
+  width: 232px;
+  z-index: 10;
+
+  .sidebar-header {
+    align-items: center;
+    display: flex;
+    height: 86px;
+    justify-content: center;
+
+    .logo {
+      height: 32.37px;
+      width: 68px;
+    }
+  }
+
+  .sidebar-menu {
+    .menu-list-item {
+      align-items: center;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0 0 16px;
+      text-decoration: none;
+
+      .menu-list-item-link {
+        align-items: center;
+        color: $color-4d4d4d;
+        display: flex;
+        flex: 1;
+        font-size: 14px;
+        height: inherit;
+        line-height: 24px;
+        padding-left: 32px;
+        text-decoration: none;
+
+        .menu-list-item-icon {
+          height: 24px;
+          margin-right: 8px;
+          width: 24px;
+        }
+      }
+
+      &.active {
+        .menu-list-item-link {
+          background-color: $color-edffed;
+          border-left: 4px solid $green;
+          color: $green;
+          font-weight: 600;
+          padding-left: 28px;
+        }
+      }
+
+      &:hover {
+        .menu-list-item-link {
+          background-color: $color-edffed;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .sidebar-container {
+    border-right: 0;
+    bottom: 0;
+    box-shadow: 0 4px 16px $col-000-1;
+    height: fit-content;
+    max-width: 100%;
+    position: fixed;
+    width: 100%;
+
+    .sidebar-header {
+      display: none;
+    }
+
+    .sidebar-menu {
+      display: flex;
+      flex: 1;
+
+      .menu-list-item {
+        flex: 1;
+        flex-direction: column;
+        height: fit-content;
+        margin: 0;
+        width: 100%;
+
+        .menu-list-item-link {
+          flex-direction: column;
+          justify-content: center;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-top: 10px;
+          width: 100%;
+
+          .menu-list-item-icon {
+            height: 18px;
+            margin-right: 0;
+            width: 18px;
+          }
+
+          .menu-list-item-title {
+            font-size: 10px;
+          }
+        }
+
+        &.active {
+          .menu-list-item-link {
+            border-bottom: 4px solid $green;
+            border-left: 0;
+            padding-left: 0;
+          }
+
+          &:hover {
+            .menu-list-item-link {
+              background-color: $color-edffed;
+            }
+          }
+        }
+
+        &:hover {
+          .menu-list-item-link {
+            background-color: unset;
+            border-bottom: 4px solid $green;
+          }
+        }
+      }
+    }
+  }
+}

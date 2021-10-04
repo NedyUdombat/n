@@ -1,0 +1,234 @@
+.child-modal-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 38px 133px 50px;
+
+  .modal-primary-icon {
+    margin-bottom: 24px;
+    min-height: 80px;
+    min-width: 80px;
+  }
+
+  .modal-title {
+    color: $black-333;
+    font-family: avertaBold;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .details {
+    color: $black-333;
+    font-family: avertaLight;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .modal-link {
+    width: -webkit-fill-available;
+
+    &:hover {
+      color: initial;
+    }
+
+    .modal-link-btn {
+      background: $green;
+      border-radius: 6px;
+      height: 48px;
+      width: -webkit-fill-available;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+.module {
+  &.home {
+    .saving-prompt-section {
+      background: $color-fef6cf;
+      border-radius: 40px;
+      display: flex;
+      height: 40px;
+      margin-bottom: 24px;
+      padding: 8px 16px;
+
+      .icon {
+        height: 24px;
+        width: 24px;
+      }
+
+      .text {
+        color: $color-ec9b40;
+        font-size: 14px;
+        line-height: 24px;
+        margin-left: 8px;
+
+        .modal-trigger {
+          background: transparent;
+          border: 0;
+          border-radius: 8px;
+          color: $color-ec9b40;
+          font-weight: 700;
+          height: fit-content;
+          padding: 0;
+          text-decoration: underline;
+
+          &:focus {
+            box-shadow: none;
+            outline: 0;
+          }
+        }
+      }
+    }
+
+    .balance-section {
+      display: flex;
+      margin-bottom: 40px;
+
+      .card {
+        background: $white;
+        border: 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px $col-000-12;
+        height: 230px;
+        margin-right: 24px;
+        width: 360px;
+
+        .card-body {
+          padding: 16px;
+
+          .card-button-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+
+            .add-money-link {
+              border-radius: 8px;
+              color: $red;
+
+              &:hover {
+                color: initial;
+              }
+
+              .btn {
+                background: $col-fff-12;
+                border-radius: 8px;
+                height: 48px;
+                width: 132px;
+
+                &:hover {
+                  color: $white;
+                }
+              }
+            }
+          }
+
+          .info {
+            padding: 0 8px 8px;
+
+            .value {
+              font-family: avertaBold;
+              font-size: 32px;
+              font-style: normal;
+              font-weight: bold;
+              line-height: 32px;
+              margin-top: 8px;
+            }
+          }
+        }
+
+        .card-footer {
+          align-items: center;
+          background-color: transparent;
+          border-top: 1px solid $col-fff-12;
+          color: $white;
+          display: flex;
+          font-size: 14px;
+          justify-content: space-between;
+          line-height: 18px;
+          min-height: 65px;
+          padding: 0 16px;
+
+          .value {
+            font-weight: 600;
+          }
+        }
+
+        &.pension-balance {
+          background: $green;
+          color: $white;
+        }
+
+        &.wallet-balance {
+          .card-body {
+            display: flex;
+            flex-direction: column-reverse;
+
+            .info {
+              padding: 0 8px 8px;
+
+              .title,
+              .value {
+                color: $color-3e4a3d;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .child-modal-content {
+    padding: 20px 10px;
+
+    .modal-title {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    .details {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .modal-link {
+      .modal-link-btn {
+        border-radius: 8px;
+        font-size: 14px;
+        height: 48px;
+        line-height: 18px;
+        padding: 0;
+      }
+    }
+  }
+
+  .module {
+    &.home {
+      .saving-prompt-section {
+        align-items: center;
+        border-radius: 20px;
+        height: fit-content;
+        padding: 8px 16px;
+      }
+
+      .balance-section {
+        flex-wrap: wrap;
+
+        .card {
+          margin-bottom: 20px;
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

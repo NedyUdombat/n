@@ -1,0 +1,48 @@
+.saved-card-info {
+  &.info {
+    display: flex;
+
+    .bank-logo {
+      height: 35px;
+      width: 35px;
+    }
+
+    .details {
+      display: flex;
+      margin-left: 16px;
+
+      .account-number {
+        color: $black-333;
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 4px;
+      }
+
+      .bank-name {
+        color: $black-333;
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .saved-card-info {
+    &.info {
+      .bank-logo {
+        height: 35px;
+        width: 35px;
+      }
+
+      .details {
+        display: block;
+        margin-left: 16px;
+
+        .bank-name {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

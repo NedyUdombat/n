@@ -10,6 +10,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
+  // devtool: 'source-map',
   module: {
     rules: [
       {
@@ -29,10 +30,19 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          { loader: 'style-loader', options: {  } },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'resolve-url-loader', options: { minimize: true, sourceMap: true } },
+          { loader: 'sass-loader', options: { minimize: true, sourceMap: true } },
+        ],
       },
       {
-        test: /\.(png|jp(e*)g|svg|gif|ttf|woff|woff2|eot)$/,
+        test: /\.(ttf|woff2|eot|woff|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -42,6 +52,25 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        use: {
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                esModule: false,
+            },
+        },
+      },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //       'style-loader',
+      //       'css-loader',
+      //       'resolve-url-loader',
+      //       'sass-loader',
+      //   ]
+      // },
       {
         resolve: {
           extensions: ['.tsx', '.ts', '.js', '.jsx'],

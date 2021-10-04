@@ -2,8 +2,11 @@
     "root": true,
     "extends": [
       "eslint:recommended",
-      "plugin:react/recommended",
       "plugin:prettier/recommended",
+      "prettier",
+      "plugin:react/recommended",
+      "eslint-config-prettier",
+      "plugin:@typescript-eslint/recommended",
       "plugin:jsx-a11y/recommended"
     ],
     "env": {
@@ -12,24 +15,35 @@
       "jest": true,
       "browser": true
     },
-    "plugins": ["react", "jsx-a11y"],
-    "parser": "babel-eslint",
+    "plugins": ["prettier", "react", "jsx-a11y"],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "sourceType": "module",
-      "ecmaVersion": 2017
+      "ecmaVersion": 2017,
+      "ecmaFeatures": {
+        "jsx": true // Allows for the parsing of JSX
+      }
     },
+    "overrides": [
+      {
+        "files": ["**/*.tsx", "**/*.ts"],
+        "rules": {
+          "react/prop-types": "off"
+        }
+      }
+    ],
     "rules": {
       "one-var": 0,
       "react/prop-types": 0,
       "one-var-declaration-per-line": 0,
       "new-cap": 0,
       "consistent-return": 0,
-      "arrow-parens": ["error", "as-needed"],
+      "arrow-parens": 0,
       "no-param-reassign": 0,
       "comma-dangle": 0,
       "curly": ["error", "multi-line"],
       "no-console": "warn",
-      "no-unused-vars": "warn",
+      "no-unused-vars": "off",
       "no-shadow": [
         "error",
         {
@@ -39,15 +53,18 @@
       "react/jsx-filename-extension": [
         1,
         {
-          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          "extensions": [ ".ts", ".tsx", ".js", ".jsx"]
         }
       ],
-      "globals": {
-        "localStorage": true,
-        "document": true,
-        "require": true,
-        "window": true
-      },
+      "@typescript-eslint/no-unused-vars": ["off"],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      // "globals": {
+      //   "localStorage": true,
+      //   "document": true,
+      //   "require": true,
+      //   "window": true
+      // },
       "prettier/prettier": [
         "error",
         {
@@ -58,11 +75,11 @@
           "endOfLine": "lf"
         }
       ],
-      "settings": {
-        "react": {
-          "version": "detect"
-        }
-      },
+      // "settings": {
+      //   "react": {
+      //     "version": "detect"
+      //   }
+      // },
       "jsx-a11y/alt-text": [ 2, {
         "elements": [ "img", "object", "area", "input[type=\"image\"]" ],
         "img": ["Image"],

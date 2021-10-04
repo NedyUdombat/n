@@ -1,0 +1,140 @@
+.auth {
+  background: $white;
+  border: 1px solid $white;
+  border-radius: 16px;
+  box-sizing: border-box;
+  height: fit-content;
+  max-width: 628px;
+  padding: 48px 109px;
+  width: 628px;
+
+  .form-title {
+    color: $black-333;
+    font-family: avertaBold;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .form-subtitle {
+    color: $black-333;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    margin-bottom: 40px;
+  }
+
+  .form-control-group {
+    margin-bottom: 24px;
+  }
+
+  .create-btn {
+    background: $col-3d663d-10;
+    border-radius: 6px;
+    height: 48px;
+    margin-top: 16px;
+    width: -webkit-fill-available;
+
+    &.disabled {
+      background: $col-3d663d-6;
+      cursor: not-allowed;
+
+      &:hover {
+        background: $col-3d663d-6;
+        color: $white;
+      }
+    }
+
+    &:hover {
+      background: $col-3d663d-8;
+      color: $white;
+    }
+  }
+
+  .alternative {
+    color: $black-333;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    text-align: center;
+
+    .alt-link {
+      display: inline;
+    }
+  }
+
+  .alt-link {
+    color: $col-3d663d-10;
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+
+    &.btn {
+      border: 0;
+      margin-top: -1px;
+      padding: 0;
+
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    &.verify-link {
+      color: $red;
+    }
+  }
+
+  .success-icon {
+    margin-bottom: 13px;
+    max-height: 45px;
+    max-width: 45px;
+    min-height: 30px;
+    min-width: 30px;
+  }
+
+  .loader {
+    align-items: center;
+    color: $green;
+    display: flex;
+    font-size: 33px;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .success-container {
+    .form-title {
+      margin-bottom: 8px;
+    }
+
+    .link {
+      color: $green;
+      text-decoration: none;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+  .auth {
+    padding: 0;
+    width: 100%;
+
+    .form-title {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}

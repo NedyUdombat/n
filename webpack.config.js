@@ -4,13 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/Index.tsx',
-  target: "web",
+  // target: "web",
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
     publicPath: '/',
   },
-  // devtool: 'source-map',
   module: {
     rules: [
       {
@@ -62,15 +61,6 @@ module.exports = {
             },
         },
       },
-      // {
-      //   test: /\.scss$/,
-      //   use: [
-      //       'style-loader',
-      //       'css-loader',
-      //       'resolve-url-loader',
-      //       'sass-loader',
-      //   ]
-      // },
       {
         resolve: {
           extensions: ['.tsx', '.ts', '.js', '.jsx'],

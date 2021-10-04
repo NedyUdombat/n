@@ -59,9 +59,7 @@
     "lint": "node_modules/eslint/bin/eslint.js --fix",
     "format:scss": "sass-lint 'src/**/*.scss' -q -v && sass-lint-auto-fix",
     "test": "jest --coverage -- -u",
-    "webpack": "webpack",
-    "web-start": "webpack serve",
-    "dev": "webpack-dev-server --open --mode development",
+    "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "author": "Enle Technologies",

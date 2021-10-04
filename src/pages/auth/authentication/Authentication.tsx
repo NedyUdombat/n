@@ -104,6 +104,7 @@ const Authentication = (): JSX.Element => {
           history.push(bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.KYC),
         () => {
           setInputDisabled(false);
+          setDisabled(true);
           setPassword('');
         },
       ),

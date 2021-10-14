@@ -19,7 +19,8 @@
 }
 
 @font-face {
-  font-family: avertaBold;
+  font-family: AvertaBold;
+  font-weight: 600;
   src: url('../../../assets/font/Averta/AvertaStd-Bold.ttf');
 }
 
@@ -33,6 +34,8 @@
   src: url('../../../assets/font/Averta/AvertaStd-ExtraBold.ttf');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 @import './variables';
 
 html {
@@ -43,7 +46,7 @@ html {
 
   * {
     box-sizing: border-box;
-    font-family: avertaRegular;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
   }
 

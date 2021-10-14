@@ -12,7 +12,8 @@
 
     .title {
       color: $black-333;
-      font-family: avertaBold;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
       font-size: 32px;
       line-height: 40px;
       margin-bottom: 8px;
@@ -40,7 +41,8 @@
 
         .list-title {
           color: $black-333;
-          font-family: avertaBold;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 600;
           font-size: 16px;
           line-height: 26px;
           margin-bottom: 8px;
@@ -180,7 +182,8 @@
 
               .provider-name {
                 color: $black-333;
-                font-family: avertaSemiBold;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
                 font-size: 16px;
                 line-height: 20px;
                 text-align: center;
@@ -206,7 +209,8 @@
         .personal-details {
           .step-count {
             color: $green;
-            font-family: avertaBold;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
             font-size: 16px;
             line-height: 26px;
             margin-bottom: 4px;
@@ -325,7 +329,8 @@
           .personal-details {
             .step-count {
               color: $green;
-              font-family: avertaBold;
+              font-family: 'Roboto', sans-serif;
+              font-weight: 600;
               font-size: 16px;
               line-height: 26px;
               margin-bottom: 4px;

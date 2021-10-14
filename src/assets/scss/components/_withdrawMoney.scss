@@ -76,7 +76,7 @@
           width: 152px;
 
           &.disabled {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
       }
@@ -99,7 +99,8 @@
 
           .value {
             color: $green;
-            font-family: avertaBold;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
             font-size: 12px;
             font-weight: bold;
             line-height: 24px;
@@ -127,7 +128,7 @@
             min-width: 152px;
 
             &.disabled {
-              opacity: .5;
+              opacity: 0.5;
             }
           }
 
@@ -143,7 +144,7 @@
             width: 152px;
 
             &.disabled {
-              opacity: .5;
+              opacity: 0.5;
             }
           }
         }
@@ -166,7 +167,7 @@
           }
 
           &.disabled {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
       }
@@ -200,7 +201,7 @@
           width: 152px;
 
           &.disabled {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
 
@@ -216,7 +217,7 @@
           width: 152px;
 
           &.disabled {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
       }

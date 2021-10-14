@@ -17,17 +17,9 @@ export const verifyBvn =
   async (dispatch: Dispatch) => {
     try {
       dispatch({ type: BVN_VERIFICAITON_PROCESS });
-      const requestData =
-        config.ENVIRONMENT !== 'production'
-          ? {
-              firstName: config.BVN_FIRSTNAME,
-              lastName: config.BVN_LASTTNAME,
-              bvn: config.BVN_VALUE,
-            }
-          : bvnData;
       const {
         data: { data },
-      } = await bvnVerificationEndpoint(requestData);
+      } = await bvnVerificationEndpoint(bvnData);
       dispatch({ type: BVN_VERIFICAITON_SUCCESS, payload: data.bvnVerified });
       callBack();
     } catch (error: any) {

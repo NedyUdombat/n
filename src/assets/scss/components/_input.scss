@@ -3,13 +3,15 @@
 
   .form-label {
     color: $color-262626;
-    font-family: avertaSemiBold;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 4px;
 
     .optional-input-label {
-      font-family: avertaLightItalic;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
     }
   }
 
@@ -19,7 +21,8 @@
     border: 0;
     border-radius: 6px;
     color: $black-333;
-    font-family: avertaLight;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     font-size: 14px;
     font-weight: 400;
     height: 48px;
@@ -29,7 +32,8 @@
 
     &::placeholder {
       color: $color-b3b3b3;
-      font-family: avertaLight;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
       font-size: 14px;
       font-weight: normal;
       line-height: 18px;
@@ -228,14 +232,16 @@
         .search-box {
           border: 0;
           border-radius: 0;
-          font-family: avertaLight;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
           font-size: 14px;
           height: auto;
           text-transform: capitalize;
           width: -webkit-fill-available;
 
           &::placeholder {
-            font-family: avertaLight;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
             font-size: 14px;
             letter-spacing: -0.003em;
             line-height: 100%;
@@ -269,7 +275,8 @@
         border: 2px dashed $green;
 
         .info {
-          font-family: avertaSemiBold;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
         }
       }
 
@@ -309,7 +316,8 @@
       border: 0;
       border-radius: 6px;
       color: $black-333;
-      font-family: avertaLight;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
       font-size: 14px;
       font-weight: 400;
       height: 48px;

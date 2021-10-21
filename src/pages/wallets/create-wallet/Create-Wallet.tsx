@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useEffect, useState, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import moment from 'moment';
@@ -35,9 +30,7 @@ const validateForm = (errors: ErrorsType) => {
   return valid;
 };
 
-const CreateWallet = ({
-  location: { state: locationState },
-}: KYCPropsTypes): JSX.Element => {
+const CreateWallet = ({ location: { state: locationState } }: KYCPropsTypes): JSX.Element => {
   const [dateOfBirth, setDateOfBirth] = useState<string>('');
   const [pin, setPin] = useState<string>('');
   const [bvn, setBvn] = useState<string>('');
@@ -54,11 +47,7 @@ const CreateWallet = ({
   const history = useHistory();
   const location: Location = useLocation();
 
-  const errorHandler = (
-    field: string,
-    error: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -111,10 +100,7 @@ const CreateWallet = ({
     dispatch(
       createWallet(
         { dateOfBirth: moment(dateOfBirth).format('DD-MMM-YYYY'), pin, bvn },
-        () =>
-          history.push(
-            location?.state ? location?.state?.from : ROUTE_URLS.DASHBOARD_URL,
-          ),
+        () => history.push(location?.state ? location?.state?.from : ROUTE_URLS.DASHBOARD_URL),
         () => {
           setInputDisabled(false);
           setBvn('');
@@ -127,10 +113,7 @@ const CreateWallet = ({
 
   return (
     <section className="kyc">
-      <InnerPageNavBar
-        pageLogoComponent={true}
-        goBackrouteName={locationState ? locationState.from : '/'}
-      />
+      <InnerPageNavBar pageLogoComponent={true} goBackrouteName={locationState ? locationState.from : '/'} />
 
       <form className="kyc-form">
         <h1 className="title">Create Wallet</h1>
@@ -156,36 +139,21 @@ const CreateWallet = ({
             onInputChange={handleBvnChange}
             required={true}
           />
-          <PINInput
-            label="PIN"
-            id="pin"
-            length={4}
-            onChange={handlePINChange}
-            disabled={inputDisabled}
-            type="custom"
-          />
+          <PINInput label="PIN" id="pin" length={4} onChange={handlePINChange} disabled={inputDisabled} type="custom" />
 
           <p className="subtitle pin">
-            Keep your Awabah wallet secure with a 4-digit PIN. Ensure your PIN
-            is memorable and avoid obvious numbers. You can update your PIN in
-            the settings page.
+            Keep your Awabah wallet secure with a 4-digit PIN. Ensure your PIN is memorable and avoid obvious numbers.
+            You can update your PIN in the settings page.
           </p>
 
           <div className="submit-btn-section">
             {isLoading ? (
-              <button
-                type="button"
-                className="btn submit-btn disabled"
-                onClick={() => null}
-                disabled={true}
-              >
+              <button type="button" className="btn submit-btn disabled" onClick={() => null} disabled={true}>
                 <i className="fas fa-circle-notch fa-pulse" />
               </button>
             ) : (
               <button
-                className={`btn submit-btn${
-                  disabled === true ? ` disabled` : ``
-                }`}
+                className={`btn submit-btn${disabled === true ? ` disabled` : ``}`}
                 type="button"
                 disabled={disabled}
                 onClick={handleBVNVerification}

@@ -16,10 +16,7 @@ interface DashboardLayoutPropsTypes {
   routeName?: string;
 }
 
-const DashboardLayout = ({
-  children,
-  routeName,
-}: DashboardLayoutPropsTypes): JSX.Element => {
+const DashboardLayout = ({ children, routeName }: DashboardLayoutPropsTypes): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
 

@@ -26,10 +26,7 @@ const DEFAULT_STATE = {
   error: {},
 };
 
-export const userReducer = (
-  state = DEFAULT_STATE,
-  action?: { payload: unknown; type: string },
-) => {
+export const userReducer = (state = DEFAULT_STATE, action?: { payload: unknown; type: string }) => {
   switch (action?.type) {
     case GET_USER_PROCESS:
       return {

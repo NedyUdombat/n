@@ -20,11 +20,7 @@ const RadioInput = ({
   customLabel,
   formGroupClassName,
 }: RadioInputProps): JSX.Element => (
-  <div
-    className={`form-control-group${
-      formGroupClassName ? ` ${formGroupClassName}` : ''
-    }`}
-  >
+  <div className={`form-control-group${formGroupClassName ? ` ${formGroupClassName}` : ''}`}>
     {options.length > 0 &&
       options.map((option) => (
         <div className="form-check" key={option.id}>
@@ -36,22 +32,11 @@ const RadioInput = ({
             onChange={(e) => handleRadioSelect(e)}
             value={option.value}
           />
-          <label
-            className={`form-check-label${option.checked ? ` checked` : ``}`}
-            htmlFor={option.id}
-          >
-            <div
-              className={`form-check-custom-radio${
-                option.checked ? ` checked` : ``
-              }`}
-            >
+          <label className={`form-check-label${option.checked ? ` checked` : ``}`} htmlFor={option.id}>
+            <div className={`form-check-custom-radio${option.checked ? ` checked` : ``}`}>
               <div className="active"></div>
             </div>
-            {customLabel ? (
-              customLabel(option)
-            ) : (
-              <p className="form-check-label-text">{option.label}</p>
-            )}
+            {customLabel ? customLabel(option) : <p className="form-check-label-text">{option.label}</p>}
           </label>
         </div>
       ))}

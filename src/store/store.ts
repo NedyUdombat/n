@@ -20,9 +20,7 @@ const store: Store<unknown> & { dispatch: Dispatch } = createStore(
   {},
   compose(
     applyMiddleware(...middleware),
-    (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) ||
-      compose,
+    (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) || compose,
   ),
 );
 

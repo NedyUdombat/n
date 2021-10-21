@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useState, useEffect, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -22,12 +17,7 @@ import { ROUTE_URLS } from '../../../routes/RouteUrls';
 
 /** Action(s) */
 import { register } from '../../../store/modules/auth';
-import {
-  emailRegex,
-  nameSchema,
-  passwordSchema,
-  phonenumberSchema,
-} from '../../../utils/validators';
+import { emailRegex, nameSchema, passwordSchema, phonenumberSchema } from '../../../utils/validators';
 
 const validateForm = (errors: ErrorsType) => {
   let valid = true;
@@ -53,11 +43,7 @@ const Registration = (): JSX.Element => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const errorHandler = (
-    field: string,
-    error: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -86,9 +72,7 @@ const Registration = (): JSX.Element => {
     errorHandler('email', isValidEmail, 'Email is invalid');
   };
 
-  const handlePhoneNumberChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ): void | null => {
+  const handlePhoneNumberChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void | null => {
     const {
       target: { value },
     } = e;
@@ -97,9 +81,7 @@ const Registration = (): JSX.Element => {
     errorHandler('phoneNumber', phoneNumberErrors, 'Phone Number is invalid');
   };
 
-  const handlePasswordChange = (
-    e: ChangeEvent<HTMLInputElement>,
-  ): void | null => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
     const {
       target: { value },
     } = e;
@@ -135,9 +117,7 @@ const Registration = (): JSX.Element => {
   return (
     <AuthLayout>
       <form className="mx-auto auth registration">
-        <p className="form-title">
-          Take the first step towards a financially secure future.
-        </p>
+        <p className="form-title">Take the first step towards a financially secure future.</p>
         <p className="form-subtitle">Sign up for Awabah to get started.</p>
 
         <Input
@@ -184,17 +164,10 @@ const Registration = (): JSX.Element => {
           required={true}
         />
 
-        {password.length > 0 && (
-          <PasswordStrengthIndicator password={password} />
-        )}
+        {password.length > 0 && <PasswordStrengthIndicator password={password} />}
 
         {isLoading ? (
-          <button
-            type="button"
-            className="btn create-btn disabled"
-            onClick={() => null}
-            disabled={true}
-          >
+          <button type="button" className="btn create-btn disabled" onClick={() => null} disabled={true}>
             <i className="fas fa-circle-notch fa-pulse" />
           </button>
         ) : (
@@ -209,10 +182,7 @@ const Registration = (): JSX.Element => {
         )}
         <p className="alternative">
           Already have an account?
-          <Link
-            to={{ pathname: ROUTE_URLS.AUTHENTICATION_URL }}
-            className="alt-link"
-          >
+          <Link to={{ pathname: ROUTE_URLS.AUTHENTICATION_URL }} className="alt-link">
             {' '}
             Log In
           </Link>

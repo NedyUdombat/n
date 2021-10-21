@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useEffect, useState, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -36,9 +31,7 @@ const validateForm = (errors: ErrorsType) => {
   return valid;
 };
 
-const Index = ({
-  location: { state: locationState },
-}: KYCPropsTypes): JSX.Element => {
+const Index = ({ location: { state: locationState } }: KYCPropsTypes): JSX.Element => {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [bvn, setBvn] = useState<string>('');
@@ -55,11 +48,7 @@ const Index = ({
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const errorHandler = (
-    field: string,
-    error: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -70,9 +59,7 @@ const Index = ({
     }
   };
 
-  const handleFirstNameChange = (
-    e: ChangeEvent<HTMLInputElement>,
-  ): void | null => {
+  const handleFirstNameChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
     const {
       target: { value },
     } = e;
@@ -81,9 +68,7 @@ const Index = ({
     errorHandler('firstname', nameErrors, 'First Name is invalid');
   };
 
-  const handleLastNameChange = (
-    e: ChangeEvent<HTMLInputElement>,
-  ): void | null => {
+  const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
     const {
       target: { value },
     } = e;
@@ -136,28 +121,19 @@ const Index = ({
         <div className="child-modal-content">
           <img src={UserIcon} alt="Coin Icon" className="modal-primary-icon" />
           <p className="details">
-            We need your BVN to verify your identity. Your BVN does not give
-            Awabah access to your bank accounts.
+            We need your BVN to verify your identity. Your BVN does not give Awabah access to your bank accounts.
           </p>
         </div>
       </Modal>
-      <InnerPageNavBar
-        pageLogoComponent={true}
-        goBackrouteName={locationState ? locationState.from : '/'}
-      />
+      <InnerPageNavBar pageLogoComponent={true} goBackrouteName={locationState ? locationState.from : '/'} />
 
       <form className="kyc-form">
         <h1 className="title">Welcome to Awabah</h1>
         <p className="subtitle">
-          Please provide a few details to help us verify your identity. Your
-          information will be kept secure.
+          Please provide a few details to help us verify your identity. Your information will be kept secure.
         </p>
         <div className="form-section">
-          <button
-            className="info-modal modal-trigger"
-            type="button"
-            onClick={() => setIsOpenModal(true)}
-          >
+          <button className="info-modal modal-trigger" type="button" onClick={() => setIsOpenModal(true)}>
             Why we need your BVN
           </button>
 
@@ -194,25 +170,16 @@ const Index = ({
             onInputChange={handleBvnChange}
             required={true}
           />
-          <p className="info">
-            Dial *565*0# on your registered mobile number to get your BVN
-          </p>
+          <p className="info">Dial *565*0# on your registered mobile number to get your BVN</p>
 
           <div className="submit-btn-section">
             {isLoading ? (
-              <button
-                type="button"
-                className="btn submit-btn disabled"
-                onClick={() => null}
-                disabled={true}
-              >
+              <button type="button" className="btn submit-btn disabled" onClick={() => null} disabled={true}>
                 <i className="fas fa-circle-notch fa-pulse" />
               </button>
             ) : (
               <button
-                className={`btn submit-btn${
-                  disabled === true ? ` disabled` : ``
-                }`}
+                className={`btn submit-btn${disabled === true ? ` disabled` : ``}`}
                 type="button"
                 disabled={disabled}
                 onClick={handleBVNVerification}

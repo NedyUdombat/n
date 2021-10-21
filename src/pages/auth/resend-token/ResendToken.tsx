@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useState, useEffect, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -39,17 +34,11 @@ const ResendToken = (): JSX.Element => {
     email: null,
   });
 
-  const isLoading = useSelector(
-    (state: RootState) => state.verification.isLoading,
-  );
+  const isLoading = useSelector((state: RootState) => state.verification.isLoading);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const errorHandler = (
-    field: string,
-    error: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -100,10 +89,7 @@ const ResendToken = (): JSX.Element => {
     <AuthLayout>
       <form className="mx-auto auth forgot-password">
         <p className="form-title">Didn&apos;t Get Code?</p>
-        <p className="form-subtitle">
-          Enter your email address below. A new code will be sent to your
-          address.
-        </p>
+        <p className="form-subtitle">Enter your email address below. A new code will be sent to your address.</p>
 
         <Input
           type="email"
@@ -118,12 +104,7 @@ const ResendToken = (): JSX.Element => {
         />
 
         {isLoading ? (
-          <button
-            type="button"
-            className="btn create-btn disabled"
-            onClick={() => null}
-            disabled={true}
-          >
+          <button type="button" className="btn create-btn disabled" onClick={() => null} disabled={true}>
             <i className="fas fa-circle-notch fa-pulse" />
           </button>
         ) : (
@@ -137,10 +118,7 @@ const ResendToken = (): JSX.Element => {
           </button>
         )}
         <p className="alternative">
-          <Link
-            to={{ pathname: ROUTE_URLS.VERIFICATION_URL }}
-            className="alt-link"
-          >
+          <Link to={{ pathname: ROUTE_URLS.VERIFICATION_URL }} className="alt-link">
             Go back
           </Link>
         </p>

@@ -13,11 +13,7 @@ interface InnerPageNavBarPropsTypes {
   goBackrouteName: string;
 }
 
-const InnerPageNavBar = ({
-  pageTitle,
-  pageLogoComponent,
-  goBackrouteName,
-}: InnerPageNavBarPropsTypes): JSX.Element => (
+const InnerPageNavBar = ({ pageTitle, pageLogoComponent, goBackrouteName }: InnerPageNavBarPropsTypes): JSX.Element => (
   <div className="inner-navbar">
     {pageLogoComponent ? (
       <img src={AwabahLogo} alt="Awabah Logo" className="logo" />

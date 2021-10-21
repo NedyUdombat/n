@@ -14,11 +14,7 @@ interface ModalPropsTypes {
   children?: React.ReactElement;
 }
 
-const Modal = ({
-  isOpen,
-  closeModal,
-  children,
-}: ModalPropsTypes): JSX.Element => {
+const Modal = ({ isOpen, closeModal, children }: ModalPropsTypes): JSX.Element => {
   return (
     <ReactModal
       isOpen={isOpen}

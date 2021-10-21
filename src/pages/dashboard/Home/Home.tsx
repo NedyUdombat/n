@@ -24,27 +24,18 @@ const Home = (): JSX.Element => {
   const location = useLocation();
 
   const getFirstName = () =>
-    user?.name
-      ?.split(' ')[0]
-      .replace(
-        user?.name?.split(' ')[0][0],
-        user?.name?.split(' ')[0][0].toUpperCase(),
-      );
+    user?.name?.split(' ')[0].replace(user?.name?.split(' ')[0][0], user?.name?.split(' ')[0][0].toUpperCase());
 
   return (
     <DashboardLayout routeName={location.pathname}>
       <div className="module home">
         <Modal isOpen={isModalOpen} closeModal={() => setIsOpenModal(false)}>
           <div className="child-modal-content">
-            <img
-              src={OpenPensionAccountIcon}
-              alt="Coin Icon"
-              className="modal-primary-icon"
-            />
+            <img src={OpenPensionAccountIcon} alt="Coin Icon" className="modal-primary-icon" />
             <h4 className="modal-title">Open a Micro Pension account</h4>
             <p className="details">
-              Open a Micro Pension account now to start saving for your future.
-              Get a PENCOM number instantly and start saving!
+              Open a Micro Pension account now to start saving for your future. Get a PENCOM number instantly and start
+              saving!
             </p>
             <Link
               to={{
@@ -53,9 +44,7 @@ const Home = (): JSX.Element => {
               }}
               className="modal-link"
             >
-              <button className="btn modal-link-btn">
-                Open a Micro Pension account
-              </button>
+              <button className="btn modal-link-btn">Open a Micro Pension account</button>
             </Link>
           </div>
         </Modal>
@@ -69,11 +58,7 @@ const Home = (): JSX.Element => {
           <img width="" src={InfoIcon} alt="Info-icon" className="icon" />
           <p className="text">
             Start saving for your future. &nbsp;
-            <button
-              type="button"
-              onClick={() => setIsOpenModal(true)}
-              className="modal-trigger"
-            >
+            <button type="button" onClick={() => setIsOpenModal(true)} className="modal-trigger">
               Open a Micro Pension account now.
             </button>
           </p>

@@ -48,15 +48,8 @@ const NavBar = ({ user }: NavBarPropsTypes): JSX.Element => {
               </div>
             </div>
           </button>
-          <div
-            className="dropdown-menu dropdown-menu-right"
-            aria-labelledby="dropdownMenu2"
-          >
-            <button
-              className="dropdown-item"
-              type="button"
-              onClick={() => logout()}
-            >
+          <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <button className="dropdown-item" type="button" onClick={() => logout()}>
               Logout
             </button>
           </div>

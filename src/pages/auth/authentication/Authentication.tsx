@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useState, useEffect, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -46,11 +41,7 @@ const Authentication = (): JSX.Element => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const errorHandler = (
-    field: string,
-    errorState: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, errorState: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!errorState) {
       newErrorObject[field] = errorMessage;
@@ -70,9 +61,7 @@ const Authentication = (): JSX.Element => {
     errorHandler('email', isValidEmail, 'Email is invalid');
   };
 
-  const handlePasswordChange = (
-    e: ChangeEvent<HTMLInputElement>,
-  ): void | null => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
     const {
       target: { value },
     } = e;
@@ -100,8 +89,7 @@ const Authentication = (): JSX.Element => {
           email,
           password,
         },
-        (bvnVerified: boolean) =>
-          history.push(bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.KYC),
+        (bvnVerified: boolean) => history.push(bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.KYC),
         () => {
           setInputDisabled(false);
           setDisabled(true);
@@ -142,12 +130,7 @@ const Authentication = (): JSX.Element => {
         />
 
         {isLoading ? (
-          <button
-            type="button"
-            className="btn create-btn disabled"
-            onClick={() => null}
-            disabled={true}
-          >
+          <button type="button" className="btn create-btn disabled" onClick={() => null} disabled={true}>
             <i className="fas fa-circle-notch fa-pulse" />
           </button>
         ) : (
@@ -162,27 +145,17 @@ const Authentication = (): JSX.Element => {
         )}
         <p className="alternative">
           New here?
-          <Link
-            to={{ pathname: ROUTE_URLS.REGISTRATION_URL }}
-            className="alt-link"
-          >
+          <Link to={{ pathname: ROUTE_URLS.REGISTRATION_URL }} className="alt-link">
             {' '}
             Sign up for Awabah
           </Link>
         </p>
-        {Object.keys(error).length > 1 &&
-        error.message === 'You are yet to verify your phone number' ? (
-          <Link
-            to={{ pathname: ROUTE_URLS.VERIFICATION_URL }}
-            className="alt-link verify-link"
-          >
+        {Object.keys(error).length > 1 && error.message === 'You are yet to verify your phone number' ? (
+          <Link to={{ pathname: ROUTE_URLS.VERIFICATION_URL }} className="alt-link verify-link">
             Verify Phone Number
           </Link>
         ) : (
-          <Link
-            to={{ pathname: ROUTE_URLS.FORGOT_PASSWORD_URL }}
-            className="alt-link"
-          >
+          <Link to={{ pathname: ROUTE_URLS.FORGOT_PASSWORD_URL }} className="alt-link">
             Forgot password?
           </Link>
         )}

@@ -18,9 +18,7 @@ import { verify } from '../../../store/modules/verification';
 const Verification = (): JSX.Element => {
   const [inputDisabled, setInputDisabled] = useState<boolean>(false);
 
-  const isLoading = useSelector(
-    (state: RootState) => state.verification.isLoading,
-  );
+  const isLoading = useSelector((state: RootState) => state.verification.isLoading);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -48,9 +46,7 @@ const Verification = (): JSX.Element => {
     <AuthLayout>
       <form className="mx-auto auth forgot-password">
         <p className="form-title">Enter verification code</p>
-        <p className="form-subtitle">
-          A 6-digit code was sent to your phone number
-        </p>
+        <p className="form-subtitle">A 6-digit code was sent to your phone number</p>
 
         {!isLoading ? (
           <>
@@ -66,10 +62,7 @@ const Verification = (): JSX.Element => {
 
             <p className="alternative">
               Code not sent?{' '}
-              <Link
-                to={{ pathname: ROUTE_URLS.RESEND_TOKEN_URL }}
-                className="alt-link"
-              >
+              <Link to={{ pathname: ROUTE_URLS.RESEND_TOKEN_URL }} className="alt-link">
                 <strong>Resend code</strong>
               </Link>
             </p>

@@ -37,75 +37,27 @@ const App = () => {
   return (
     <Switch>
       {/* Authentication Page(s)*/}
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.REGISTRATION_URL}
-        component={Registration}
-      />
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.AUTHENTICATION_URL}
-        component={Authentication}
-      />
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.FORGOT_PASSWORD_URL}
-        component={ForgotPassword}
-      />
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.RESET_PASSWORD_URL}
-        component={ResetPassword}
-      />
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.VERIFICATION_URL}
-        component={Verification}
-      />
-      <GuestRoute
-        exact
-        path={ROUTE_URLS.RESEND_TOKEN_URL}
-        component={ResendToken}
-      />
+      <GuestRoute exact path={ROUTE_URLS.REGISTRATION_URL} component={Registration} />
+      <GuestRoute exact path={ROUTE_URLS.AUTHENTICATION_URL} component={Authentication} />
+      <GuestRoute exact path={ROUTE_URLS.FORGOT_PASSWORD_URL} component={ForgotPassword} />
+      <GuestRoute exact path={ROUTE_URLS.RESET_PASSWORD_URL} component={ResetPassword} />
+      <GuestRoute exact path={ROUTE_URLS.VERIFICATION_URL} component={Verification} />
+      <GuestRoute exact path={ROUTE_URLS.RESEND_TOKEN_URL} component={ResendToken} />
       {/* Post Auth Pag(s) */}
       <PrivateRoute exact path={ROUTE_URLS.KYC} component={KYC} />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.CREATE_WALLET}
-        component={CreateWallet}
-      />
+      <PrivateRoute exact path={ROUTE_URLS.CREATE_WALLET} component={CreateWallet} />
       {/* Dashboard Page(s) */}
       <PrivateRoute exact path={ROUTE_URLS.HOME_PAGE} component={Home} />
       <PrivateRoute exact path={ROUTE_URLS.DASHBOARD_URL} component={Home} />
       <PrivateRoute exact path={ROUTE_URLS.MICRO_PENSION} component={Micro} />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.WITHDRAW}
-        component={WithdrawMoney}
-      />
+      <PrivateRoute exact path={ROUTE_URLS.WITHDRAW} component={WithdrawMoney} />
       <PrivateRoute exact path={ROUTE_URLS.ADD_MONEY} component={AddMoney} />
       <PrivateRoute exact path={ROUTE_URLS.SETTINGS} component={Settings} />
       <PrivateRoute exact path={ROUTE_URLS.WALLET} component={Wallet} />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.TRANSFER_MONEY}
-        component={TransferMoney}
-      />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.CREATE_PENCOM_ACCOUNT}
-        component={CreateMicroPensionAccount}
-      />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.SELECT_PENSION_PROVIDER}
-        component={SelectPensionProvider}
-      />
-      <PrivateRoute
-        exact
-        path={ROUTE_URLS.CREATE_PENSION_FORM}
-        component={PensionForm}
-      />
+      <PrivateRoute exact path={ROUTE_URLS.TRANSFER_MONEY} component={TransferMoney} />
+      <PrivateRoute exact path={ROUTE_URLS.CREATE_PENCOM_ACCOUNT} component={CreateMicroPensionAccount} />
+      <PrivateRoute exact path={ROUTE_URLS.SELECT_PENSION_PROVIDER} component={SelectPensionProvider} />
+      <PrivateRoute exact path={ROUTE_URLS.CREATE_PENSION_FORM} component={PensionForm} />
       {/** Other Page(s) */}
       <Route path="*" component={NotFound} />
     </Switch>

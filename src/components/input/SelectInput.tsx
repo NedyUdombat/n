@@ -18,16 +18,7 @@ interface SelectInputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
 }
 
-const SelectInput = ({
-  options,
-  label,
-  id,
-  onChange,
-  value,
-  name,
-  placeholder,
-  disabled,
-}: SelectInputProps) => {
+const SelectInput = ({ options, label, id, onChange, value, name, placeholder, disabled }: SelectInputProps) => {
   const handleSelectChange = (option: any) => {
     const e = new Event('input', { bubbles: true });
     Object.defineProperty(e, 'target', {
@@ -41,9 +32,7 @@ const SelectInput = ({
     onChange(e as unknown as ChangeEvent<HTMLInputElement>);
   };
 
-  const selectValue = value
-    ? options?.filter((opt) => opt.value === value)
-    : [{ value: '', label: '' }];
+  const selectValue = value ? options?.filter((opt) => opt.value === value) : [{ value: '', label: '' }];
 
   return (
     <div className="form-control-group">

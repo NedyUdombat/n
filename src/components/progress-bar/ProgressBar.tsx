@@ -11,11 +11,7 @@ interface ProgressBarProps {
   tabSwitchCallback?: (activeIndex: number) => void;
 }
 
-const ProgressBar = ({
-  steps,
-  activeTab,
-  tabSwitchCallback,
-}: ProgressBarProps): JSX.Element => {
+const ProgressBar = ({ steps, activeTab, tabSwitchCallback }: ProgressBarProps): JSX.Element => {
   const [stepAmount, setStepAmount] = useState<Step[]>([]);
   const [activeStepIndex, setActiveStepIndex] = useState<number>();
 
@@ -37,17 +33,13 @@ const ProgressBar = ({
             <button
               key={step.stepName}
               type="button"
-              className={`step-btn${
-                activeStepIndex === index + 1 ? ` active` : ''
-              }${activeStepIndex > index + 1 ? ` past` : ''}${
-                step.completed === true ? ` completed` : ''
-              }`}
+              className={`step-btn${activeStepIndex === index + 1 ? ` active` : ''}${
+                activeStepIndex > index + 1 ? ` past` : ''
+              }${step.completed === true ? ` completed` : ''}`}
               onClick={() => handleStepClick(index)}
             >
               <div className="active-bar" />
-              <p className="step-name">
-                {step.stepName ? step.stepName : index}
-              </p>
+              <p className="step-name">{step.stepName ? step.stepName : index}</p>
             </button>
           ))}
         </div>

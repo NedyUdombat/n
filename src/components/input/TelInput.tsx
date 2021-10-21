@@ -13,16 +13,7 @@ interface TelInputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
 }
 
-const TelInput = ({
-  label,
-  id,
-  value,
-  onChange,
-  placeholder,
-  name,
-  required,
-  disabled,
-}: TelInputProps) => {
+const TelInput = ({ label, id, value, onChange, placeholder, name, required, disabled }: TelInputProps) => {
   const handlePhoneNumberChange = (phone: string) => {
     const e = new Event('input', { bubbles: true });
     Object.defineProperty(e, 'target', {

@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  MouseEventHandler,
-} from 'react';
+import React, { useState, useEffect, ChangeEvent, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -46,11 +41,7 @@ const ForgotPassword = (): JSX.Element => {
   const isLoading = useSelector((state: RootState) => state.auth.isLoading);
   const dispatch = useDispatch();
 
-  const errorHandler = (
-    field: string,
-    error: boolean,
-    errorMessage: string,
-  ) => {
+  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -102,10 +93,7 @@ const ForgotPassword = (): JSX.Element => {
         {!showSuccessMessage ? (
           <>
             <p className="form-title">Forgot Password?</p>
-            <p className="form-subtitle">
-              Enter your email address below. A password reset link will be sent
-              to you.
-            </p>
+            <p className="form-subtitle">Enter your email address below. A password reset link will be sent to you.</p>
 
             <Input
               type="email"
@@ -120,20 +108,13 @@ const ForgotPassword = (): JSX.Element => {
             />
 
             {isLoading ? (
-              <button
-                type="button"
-                className="btn create-btn disabled"
-                onClick={() => null}
-                disabled={true}
-              >
+              <button type="button" className="btn create-btn disabled" onClick={() => null} disabled={true}>
                 <i className="fas fa-circle-notch fa-pulse" />
               </button>
             ) : (
               <button
                 type="button"
-                className={`btn create-btn${
-                  disabled === true ? ` disabled` : ``
-                }`}
+                className={`btn create-btn${disabled === true ? ` disabled` : ``}`}
                 onClick={handleSubmit}
                 disabled={disabled}
               >
@@ -141,25 +122,16 @@ const ForgotPassword = (): JSX.Element => {
               </button>
             )}
             <p className="alternative">
-              <Link
-                to={{ pathname: ROUTE_URLS.AUTHENTICATION_URL }}
-                className="alt-link"
-              >
+              <Link to={{ pathname: ROUTE_URLS.AUTHENTICATION_URL }} className="alt-link">
                 Go back
               </Link>
             </p>
           </>
         ) : (
           <div className="success-container">
-            <img
-              src={SuccessIcon}
-              alt="Success Icon"
-              className="success-icon"
-            />
+            <img src={SuccessIcon} alt="Success Icon" className="success-icon" />
             <p className="form-title">Email sent</p>
-            <p className="form-subtitle">
-              Check your email and click on the link to reset your password
-            </p>
+            <p className="form-subtitle">Check your email and click on the link to reset your password</p>
           </div>
         )}
       </form>

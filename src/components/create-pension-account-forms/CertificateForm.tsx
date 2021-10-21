@@ -20,13 +20,8 @@ interface CertificateFormProps {
   setBtnDisabled: (isBoolean: boolean) => void;
 }
 
-const CertificateForm = ({
-  pencomDetails,
-  setPencomDetails,
-}: CertificateFormProps) => {
-  const handleSetPersonalDetails = (
-    e: ChangeEvent<HTMLInputElement>,
-  ): void | null => {
+const CertificateForm = ({ pencomDetails, setPencomDetails }: CertificateFormProps) => {
+  const handleSetPersonalDetails = (e: ChangeEvent<HTMLInputElement>): void | null => {
     const {
       target: { name, value },
     } = e;
@@ -53,9 +48,7 @@ const CertificateForm = ({
       name: 'certificateDate',
       label: 'Date',
       value: pencomDetails?.certificateDate
-        ? moment(pencomDetails?.certificateDate, 'DD-DMMM-YYYY').format(
-            'YYYY-MM-DD',
-          )
+        ? moment(pencomDetails?.certificateDate, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
         : pencomDetails?.certificateDate,
       disabled: false,
       onInputChange: handleSetPersonalDetails,

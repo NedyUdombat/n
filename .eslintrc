@@ -59,12 +59,6 @@
       "@typescript-eslint/no-unused-vars": ["off"],
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      // "globals": {
-      //   "localStorage": true,
-      //   "document": true,
-      //   "require": true,
-      //   "window": true
-      // },
       "prettier/prettier": [
         "error",
         {
@@ -75,11 +69,6 @@
           "endOfLine": "lf"
         }
       ],
-      // "settings": {
-      //   "react": {
-      //     "version": "detect"
-      //   }
-      // },
       "jsx-a11y/alt-text": [ 2, {
         "elements": [ "img", "object", "area", "input[type=\"image\"]" ],
         "img": ["Image"],

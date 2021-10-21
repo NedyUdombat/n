@@ -9,7 +9,10 @@ const TransactionHistoryTable = (): JSX.Element => (
     <div className="info">
       <img src={Invoice} alt="Invoice" className="icon" />
       <h3 className="title">No transactions</h3>
-      <p className="description">Top up your pension account or make a wallet transaction to see activity here</p>
+      <p className="description">
+        Top up your pension account or make a wallet transaction to see activity
+        here
+      </p>
     </div>
   </section>
 );

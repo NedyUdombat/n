@@ -182,23 +182,24 @@ export const getStates = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const getCities = (stateId: string, cityType: string) => async (dispatch: Dispatch) => {
-  try {
-    dispatch({ type: GET_CITIES_PROCESS });
-    const {
-      data: {
-        data: { cities },
-      },
-    } = await getCitiesEndpoint(stateId);
-    dispatch({
-      type: GET_CITIES_SUCCESS,
-      payload: cities,
-      stateName: cityType,
-    });
-  } catch (error: any) {
-    dispatch({ type: GET_CITIES_ERROR, payload: error.response.data });
-  }
-};
+export const getCities =
+  (stateId: string, cityType: string) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({ type: GET_CITIES_PROCESS });
+      const {
+        data: {
+          data: { cities },
+        },
+      } = await getCitiesEndpoint(stateId);
+      dispatch({
+        type: GET_CITIES_SUCCESS,
+        payload: cities,
+        stateName: cityType,
+      });
+    } catch (error: any) {
+      dispatch({ type: GET_CITIES_ERROR, payload: error.response.data });
+    }
+  };
 
 export const getIndustries = () => async (dispatch: Dispatch) => {
   try {

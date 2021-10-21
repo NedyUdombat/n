@@ -47,7 +47,8 @@ const DropzoneInput = ({ label, id, name, onChange }: DropzoneInputProps) => {
       <div {...getRootProps({ className: 'dropzone' })}>
         <input id={id} {...getInputProps()} />
         <p className="info">
-          Drag and drop your signature or <span className="upload-trigger">upload</span>
+          Drag and drop your signature or{' '}
+          <span className="upload-trigger">upload</span>
         </p>
       </div>
       <ul className="file-lists">{fileList(acceptedFiles)}</ul>

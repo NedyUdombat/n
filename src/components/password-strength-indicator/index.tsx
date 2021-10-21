@@ -7,7 +7,9 @@ interface PasswordStrengthIndicatorPropsType {
   password?: string;
 }
 
-const PasswordStrengthIndicator = ({ password }: PasswordStrengthIndicatorPropsType): JSX.Element => {
+const PasswordStrengthIndicator = ({
+  password,
+}: PasswordStrengthIndicatorPropsType): JSX.Element => {
   const [lowerCaseCheck, setLowerCaseCheck] = useState<boolean>(false);
   const [upperCaseCheck, setUpperCaseCheck] = useState<boolean>(false);
   const [numberCheck, setNumberCheck] = useState<boolean>(false);

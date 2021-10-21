@@ -36,8 +36,12 @@ interface BankAccountsProps {
 }
 
 const TransferMoney = (): JSX.Element => {
-  const [transferAmount, setTransferAmount] = useState<number | string | undefined>();
-  const [transferToOptions, setTransferToOptions] = useState<TransferOptionsProps[]>([
+  const [transferAmount, setTransferAmount] = useState<
+    number | string | undefined
+  >();
+  const [transferToOptions, setTransferToOptions] = useState<
+    TransferOptionsProps[]
+  >([
     {
       label: 'Pension account',
       id: 'pensionAccount',
@@ -85,16 +89,23 @@ const TransferMoney = (): JSX.Element => {
   ]);
   const [showAmountForm, setShowAmountForm] = useState<boolean>(true);
   const [showPinForm, setshowPinForm] = useState<boolean>(false);
-  const [showBankAccountForm, setShowBankAccountForm] = useState<boolean>(false);
+  const [showBankAccountForm, setShowBankAccountForm] =
+    useState<boolean>(false);
   const [lastLocation, setLastLocation] = useState<string>('');
 
   const location: Location = useLocation();
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ): void => {
     setTransferAmount(e.target.value);
   };
 
-  const handleRadioSelect = (e: ChangeEvent<HTMLInputElement>, optsArray: any, callback: (opts: any) => void) => {
+  const handleRadioSelect = (
+    e: ChangeEvent<HTMLInputElement>,
+    optsArray: any,
+    callback: (opts: any) => void,
+  ) => {
     const checkedOption = optsArray.find((opt: any) => opt.checked === true);
     const newOptsArray = optsArray.map((option: any) => {
       if (option.value === checkedOption?.value) {
@@ -111,7 +122,9 @@ const TransferMoney = (): JSX.Element => {
   };
 
   const handleTransferTypeSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    handleRadioSelect(e, transferToOptions, (opsArray) => setTransferToOptions(opsArray));
+    handleRadioSelect(e, transferToOptions, (opsArray) =>
+      setTransferToOptions(opsArray),
+    );
   };
 
   const handleBankAccountSelect = (e: ChangeEvent<HTMLInputElement>) => {
@@ -119,12 +132,22 @@ const TransferMoney = (): JSX.Element => {
   };
 
   const handleAmountFormSubmit = (): void => {
-    if (transferAmount && transferToOptions.find((opt) => opt.checked === true && opt.value === 'pensionAccount')) {
+    if (
+      transferAmount &&
+      transferToOptions.find(
+        (opt) => opt.checked === true && opt.value === 'pensionAccount',
+      )
+    ) {
       setShowAmountForm(false);
       setLastLocation('amountForm');
       return setshowPinForm(true);
     }
-    if (transferAmount && transferToOptions.find((opt) => opt.checked === true && opt.value === 'bankAccount')) {
+    if (
+      transferAmount &&
+      transferToOptions.find(
+        (opt) => opt.checked === true && opt.value === 'bankAccount',
+      )
+    ) {
       setShowAmountForm(false);
       setLastLocation('amountForm');
       return setShowBankAccountForm(true);
@@ -173,7 +196,9 @@ const TransferMoney = (): JSX.Element => {
     <section className="transfer-money-section">
       <InnerPageNavBar
         pageTitle="Transfer Money"
-        goBackrouteName={location?.state ? location?.state?.from : ROUTE_URLS.WALLET}
+        goBackrouteName={
+          location?.state ? location?.state?.from : ROUTE_URLS.WALLET
+        }
       />
       <section className="transfer-activity-card">
         <p className="transfer-activity-card-title">Enter transfer details</p>
@@ -193,12 +218,22 @@ const TransferMoney = (): JSX.Element => {
 
             <div className="form-control-group transfer-location">
               <p className="form-label">Transfer to</p>
-              <p className="form-label-subtitle">Where do you want to transfer money to</p>
-              <RadioInput options={transferToOptions} name="transferTo" handleRadioSelect={handleTransferTypeSelect} />
+              <p className="form-label-subtitle">
+                Where do you want to transfer money to
+              </p>
+              <RadioInput
+                options={transferToOptions}
+                name="transferTo"
+                handleRadioSelect={handleTransferTypeSelect}
+              />
             </div>
 
             <div className="submit-btn-section">
-              <button className="btn submit-btn disabled" type="button" onClick={() => handleAmountFormSubmit()}>
+              <button
+                className="btn submit-btn disabled"
+                type="button"
+                onClick={() => handleAmountFormSubmit()}
+              >
                 Next
               </button>
             </div>
@@ -207,7 +242,9 @@ const TransferMoney = (): JSX.Element => {
         {showPinForm && (
           <form className="pin-form">
             <div className="form-control-group">
-              <p className="form-label-subtitle">Enter your wallet PIN to transfer ₦2,000 to your pension account</p>
+              <p className="form-label-subtitle">
+                Enter your wallet PIN to transfer ₦2,000 to your pension account
+              </p>
               <PINInput label="PIN" id="pin" />
               <p className="wallet-balance-amount">
                 Wallet balance:
@@ -216,7 +253,11 @@ const TransferMoney = (): JSX.Element => {
             </div>
 
             <div className="submit-btn-section">
-              <button className="btn cancel-btn" type="button" onClick={() => handlePinFormG0Back()}>
+              <button
+                className="btn cancel-btn"
+                type="button"
+                onClick={() => handlePinFormG0Back()}
+              >
                 Cancel
               </button>
               <button className="btn submit-btn disabled" type="button">
@@ -228,7 +269,9 @@ const TransferMoney = (): JSX.Element => {
         {showBankAccountForm && (
           <form className="bank-detials-form">
             <div className="form-control-group transfer-location">
-              <p className="form-label">Select a bank account to transfer money to</p>
+              <p className="form-label">
+                Select a bank account to transfer money to
+              </p>
               <RadioInput
                 customLabel={renderCustomLabel}
                 options={bankAccounts}
@@ -238,10 +281,18 @@ const TransferMoney = (): JSX.Element => {
             </div>
 
             <div className="submit-btn-section">
-              <button className="btn cancel-btn" type="button" onClick={() => goBack(lastLocation)}>
+              <button
+                className="btn cancel-btn"
+                type="button"
+                onClick={() => goBack(lastLocation)}
+              >
                 Cancel
               </button>
-              <button className="btn submit-btn disabled" type="button" onClick={() => handleBankAccountSelection()}>
+              <button
+                className="btn submit-btn disabled"
+                type="button"
+                onClick={() => handleBankAccountSelection()}
+              >
                 Next
               </button>
             </div>

@@ -42,7 +42,8 @@ const Input = ({
   return (
     <div className="form-control-group">
       <label htmlFor={id} className="form-label">
-        {label} {optional && <span className="optional-input-label">(optional)</span>}
+        {label}{' '}
+        {optional && <span className="optional-input-label">(optional)</span>}
       </label>
       <input
         type={inputType}
@@ -56,11 +57,18 @@ const Input = ({
         required={required}
       />
       {type === 'password' && (
-        <button type="button" className="password-lock" onClick={() => handlePassswordStateChange()}>
+        <button
+          type="button"
+          className="password-lock"
+          onClick={() => handlePassswordStateChange()}
+        >
           {showPassword ? (
             <i className="fas fa-eye" />
           ) : (
-            <i style={{ color: '#ccc' }} className="fas fa-eye-slash text-secondary" />
+            <i
+              style={{ color: '#ccc' }}
+              className="fas fa-eye-slash text-secondary"
+            />
           )}
         </button>
       )}

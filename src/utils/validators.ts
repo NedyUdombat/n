@@ -31,11 +31,44 @@ passwordSchema
     'abcedfgh',
   ]);
 
-phonenumberSchema.is().min(10).has().not().lowercase().has().digits().has().not().spaces();
+phonenumberSchema
+  .is()
+  .min(10)
+  .has()
+  .not()
+  .lowercase()
+  .has()
+  .digits()
+  .has()
+  .not()
+  .spaces();
 
 nameSchema.is().min(3).has().lowercase().has().not().digits().has().spaces();
-singleNameSchema.is().min(3).has().lowercase().has().not().digits().has().not().spaces();
-bvnSchema.is().min(10).is().digits().has().not().letters().has().not().spaces().has().not().symbols();
+singleNameSchema
+  .is()
+  .min(3)
+  .has()
+  .lowercase()
+  .has()
+  .not()
+  .digits()
+  .has()
+  .not()
+  .spaces();
+bvnSchema
+  .is()
+  .min(10)
+  .is()
+  .digits()
+  .has()
+  .not()
+  .letters()
+  .has()
+  .not()
+  .spaces()
+  .has()
+  .not()
+  .symbols();
 
 const emailRegex =
   /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -47,4 +80,12 @@ const passwordPartsRegex = {
   minLength: 8,
 };
 
-export { passwordSchema, nameSchema, phonenumberSchema, emailRegex, passwordPartsRegex, bvnSchema, singleNameSchema };
+export {
+  passwordSchema,
+  nameSchema,
+  phonenumberSchema,
+  emailRegex,
+  passwordPartsRegex,
+  bvnSchema,
+  singleNameSchema,
+};

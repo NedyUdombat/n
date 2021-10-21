@@ -31,7 +31,10 @@ import {
   getEmployers,
   getRelationships,
 } from '../../../store/modules/pencom';
-import { PencomDetailsReducer, DefaultPencomDetails } from '../../../store/modules/create-pencom';
+import {
+  PencomDetailsReducer,
+  DefaultPencomDetails,
+} from '../../../store/modules/create-pencom';
 
 /** Type(s) */
 import { RootState } from '../../../store/rootReducer';
@@ -45,26 +48,39 @@ interface PensionFormProps {
   location: { pathname: string };
 }
 
-const PensionForm = ({ location: { pathname } }: PensionFormProps): JSX.Element => {
+const PensionForm = ({
+  location: { pathname },
+}: PensionFormProps): JSX.Element => {
   const [activeTab, setActiveTab] = useState<number>(1);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [showPensionForm, setShowPensionForm] = useState<boolean>(false);
 
-  const [pencomDetails, setPencomDetails] = useReducer(PencomDetailsReducer, DefaultPencomDetails);
+  const [pencomDetails, setPencomDetails] = useReducer(
+    PencomDetailsReducer,
+    DefaultPencomDetails,
+  );
 
   const titles = useSelector((state: RootState) => state.pencom.titles);
-  const maritalStatus = useSelector((state: RootState) => state.pencom.maritalStatus);
+  const maritalStatus = useSelector(
+    (state: RootState) => state.pencom.maritalStatus,
+  );
   const countries = useSelector((state: RootState) => state.pencom.countries);
   const states = useSelector((state: RootState) => state.pencom.states);
-  const originCities = useSelector((state: RootState) => state.pencom.originCities);
+  const originCities = useSelector(
+    (state: RootState) => state.pencom.originCities,
+  );
   const resCities = useSelector((state: RootState) => state.pencom.resCities);
-  const employerCities = useSelector((state: RootState) => state.pencom.employerCities);
+  const employerCities = useSelector(
+    (state: RootState) => state.pencom.employerCities,
+  );
   const nokCities = useSelector((state: RootState) => state.pencom.nokCities);
   const banks = useSelector((state: RootState) => state.pencom.banks);
   const sectors = useSelector((state: RootState) => state.pencom.sectors);
   const industries = useSelector((state: RootState) => state.pencom.industries);
   const employers = useSelector((state: RootState) => state.pencom.employers);
-  const relationships = useSelector((state: RootState) => state.pencom.relationships);
+  const relationships = useSelector(
+    (state: RootState) => state.pencom.relationships,
+  );
 
   const dispatch = useDispatch();
 
@@ -254,14 +270,25 @@ const PensionForm = ({ location: { pathname } }: PensionFormProps): JSX.Element 
       <section className="create-pension-account pension-form">
         <InnerPageNavBar pageLogoComponent={true} goBackrouteName="/" />
         <div className="content">
-          <ProgressBar steps={steps} activeTab={activeTab} tabSwitchCallback={handleTabSwitch} />
+          <ProgressBar
+            steps={steps}
+            activeTab={activeTab}
+            tabSwitchCallback={handleTabSwitch}
+          />
           <section className="forms-section">{renderForms()}</section>
         </div>
         <footer className="create-pension-account-footer">
           {activeTab === 1 && (
             <div className="multiple-btns">
-              <button className="btn back-btn" onClick={() => setShowPensionForm(false)}>
-                <img src={ArrowLeft} alt="Arrow Left Icon" className="btn-icon" />
+              <button
+                className="btn back-btn"
+                onClick={() => setShowPensionForm(false)}
+              >
+                <img
+                  src={ArrowLeft}
+                  alt="Arrow Left Icon"
+                  className="btn-icon"
+                />
                 Back
               </button>
               <button
@@ -276,19 +303,39 @@ const PensionForm = ({ location: { pathname } }: PensionFormProps): JSX.Element 
           )}
           {activeTab !== steps.length && activeTab > 1 && (
             <div className="multiple-btns">
-              <button type="button" className="btn back-btn" onClick={() => handleBack()}>
-                <img src={ArrowLeft} alt="Arrow Left Icon" className="btn-icon" />
+              <button
+                type="button"
+                className="btn back-btn"
+                onClick={() => handleBack()}
+              >
+                <img
+                  src={ArrowLeft}
+                  alt="Arrow Left Icon"
+                  className="btn-icon"
+                />
                 Back
               </button>
-              <button type="button" className="next-btn" onClick={() => handleNext()}>
+              <button
+                type="button"
+                className="next-btn"
+                onClick={() => handleNext()}
+              >
                 Next
               </button>
             </div>
           )}
           {activeTab === steps.length && (
             <div className="multiple-btns">
-              <button type="button" className="btn back-btn" onClick={() => handleBack()}>
-                <img src={ArrowLeft} alt="Arrow Left Icon" className="btn-icon" />
+              <button
+                type="button"
+                className="btn back-btn"
+                onClick={() => handleBack()}
+              >
+                <img
+                  src={ArrowLeft}
+                  alt="Arrow Left Icon"
+                  className="btn-icon"
+                />
                 Back
               </button>
               <Link

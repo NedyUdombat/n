@@ -13,8 +13,10 @@ export const destroyToken = (): null => {
   return null;
 };
 
-export const setRedirectUrl = (url: string): void => localStorage.setItem('redirectUrl', url);
-export const removeRedirectUrl = (): void => localStorage.removeItem('redirectUrl');
+export const setRedirectUrl = (url: string): void =>
+  localStorage.setItem('redirectUrl', url);
+export const removeRedirectUrl = (): void =>
+  localStorage.removeItem('redirectUrl');
 
 export const logout = () => {
   destroyToken();

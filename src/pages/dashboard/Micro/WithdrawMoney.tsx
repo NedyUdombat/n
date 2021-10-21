@@ -38,8 +38,12 @@ interface BankAccountsProps {
 }
 
 const WithdrawMoney = (): JSX.Element => {
-  const [transferAmount, setTransferAmount] = useState<number | string | undefined>();
-  const [transferToOptions, setTransferToOptions] = useState<TransferOptionsProps[]>([
+  const [transferAmount, setTransferAmount] = useState<
+    number | string | undefined
+  >();
+  const [transferToOptions, setTransferToOptions] = useState<
+    TransferOptionsProps[]
+  >([
     {
       label: 'Awabah wallet',
       id: 'awabahWallet',
@@ -87,16 +91,23 @@ const WithdrawMoney = (): JSX.Element => {
   ]);
   const [showAmountForm, setShowAmountForm] = useState<boolean>(true);
   const [showPinForm, setshowPinForm] = useState<boolean>(false);
-  const [showBankAccountForm, setShowBankAccountForm] = useState<boolean>(false);
+  const [showBankAccountForm, setShowBankAccountForm] =
+    useState<boolean>(false);
   const [lastLocation, setLastLocation] = useState<string>('');
 
   const location: Location = useLocation();
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ): void => {
     setTransferAmount(e.target.value);
   };
 
-  const handleRadioSelect = (e: ChangeEvent<HTMLInputElement>, optsArray: any, callback: (opts: any) => void) => {
+  const handleRadioSelect = (
+    e: ChangeEvent<HTMLInputElement>,
+    optsArray: any,
+    callback: (opts: any) => void,
+  ) => {
     const checkedOption = optsArray.find((opt: any) => opt.checked === true);
     const newOptsArray = optsArray.map((option: any) => {
       if (option.value === checkedOption?.value) {
@@ -113,7 +124,9 @@ const WithdrawMoney = (): JSX.Element => {
   };
 
   const handleTransferTypeSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    handleRadioSelect(e, transferToOptions, (opsArray) => setTransferToOptions(opsArray));
+    handleRadioSelect(e, transferToOptions, (opsArray) =>
+      setTransferToOptions(opsArray),
+    );
   };
 
   const handleBankAccountSelect = (e: ChangeEvent<HTMLInputElement>) => {
@@ -121,12 +134,22 @@ const WithdrawMoney = (): JSX.Element => {
   };
 
   const handleAmountFormSubmit = (): void => {
-    if (transferAmount && transferToOptions.find((opt) => opt.checked === true && opt.value === 'awabahWallet')) {
+    if (
+      transferAmount &&
+      transferToOptions.find(
+        (opt) => opt.checked === true && opt.value === 'awabahWallet',
+      )
+    ) {
       setShowAmountForm(false);
       setLastLocation('amountForm');
       return setshowPinForm(true);
     }
-    if (transferAmount && transferToOptions.find((opt) => opt.checked === true && opt.value === 'bankAccount')) {
+    if (
+      transferAmount &&
+      transferToOptions.find(
+        (opt) => opt.checked === true && opt.value === 'bankAccount',
+      )
+    ) {
       setShowAmountForm(false);
       setLastLocation('amountForm');
       return setShowBankAccountForm(true);
@@ -175,7 +198,9 @@ const WithdrawMoney = (): JSX.Element => {
     <section className="withdraw-money-section">
       <InnerPageNavBar
         pageTitle="Withdraw Money"
-        goBackrouteName={location?.state ? location?.state?.from : ROUTE_URLS.MICRO_PENSION}
+        goBackrouteName={
+          location?.state ? location?.state?.from : ROUTE_URLS.MICRO_PENSION
+        }
       />
       <section className="transfer-activity-card">
         <p className="transfer-activity-card-title">Enter transfer details</p>
@@ -184,7 +209,8 @@ const WithdrawMoney = (): JSX.Element => {
             <section className="saving-prompt-section">
               <img width="" src={InfoIcon} alt="Info-icon" className="icon" />
               <p className="text">
-                Note that withdrawal requests can take up to 48hrs. You have ₦40,000 available for withdrawal.
+                Note that withdrawal requests can take up to 48hrs. You have
+                ₦40,000 available for withdrawal.
               </p>
             </section>
             <Input
@@ -201,12 +227,22 @@ const WithdrawMoney = (): JSX.Element => {
 
             <div className="form-control-group transfer-location">
               <p className="form-label">Withdraw to</p>
-              <p className="form-label-subtitle">This is where the withdrawn amount will be credited to</p>
-              <RadioInput options={transferToOptions} name="transferTo" handleRadioSelect={handleTransferTypeSelect} />
+              <p className="form-label-subtitle">
+                This is where the withdrawn amount will be credited to
+              </p>
+              <RadioInput
+                options={transferToOptions}
+                name="transferTo"
+                handleRadioSelect={handleTransferTypeSelect}
+              />
             </div>
 
             <div className="submit-btn-section">
-              <button className="btn submit-btn disabled" type="button" onClick={() => handleAmountFormSubmit()}>
+              <button
+                className="btn submit-btn disabled"
+                type="button"
+                onClick={() => handleAmountFormSubmit()}
+              >
                 Next
               </button>
             </div>
@@ -216,7 +252,8 @@ const WithdrawMoney = (): JSX.Element => {
           <form className="pin-form">
             <div className="form-control-group">
               <p className="form-label-subtitle">
-                Enter the OTP sent to your registered phone number +234809*****99 to verify this transaction
+                Enter the OTP sent to your registered phone number
+                +234809*****99 to verify this transaction
               </p>
               <PINInput label="OTP" id="otp" length={6} />
               <p className="wallet-balance-amount">
@@ -227,11 +264,20 @@ const WithdrawMoney = (): JSX.Element => {
 
             <div className="submit-btn-section">
               <button className="btn resend-btn" type="button">
-                <img width="" src={ResendIcon} alt="resend-icon" className="icon" />
+                <img
+                  width=""
+                  src={ResendIcon}
+                  alt="resend-icon"
+                  className="icon"
+                />
                 Resend OTP
               </button>
               <div className="bottom-btns">
-                <button className="btn cancel-btn" type="button" onClick={() => handlePinFormG0Back()}>
+                <button
+                  className="btn cancel-btn"
+                  type="button"
+                  onClick={() => handlePinFormG0Back()}
+                >
                   Cancel
                 </button>
                 <button className="btn submit-btn disabled" type="button">
@@ -244,7 +290,9 @@ const WithdrawMoney = (): JSX.Element => {
         {showBankAccountForm && (
           <form className="bank-detials-form">
             <div className="form-control-group transfer-location">
-              <p className="form-label">Select a bank account to transfer money to</p>
+              <p className="form-label">
+                Select a bank account to transfer money to
+              </p>
               <RadioInput
                 customLabel={renderCustomLabel}
                 options={bankAccounts}
@@ -254,10 +302,18 @@ const WithdrawMoney = (): JSX.Element => {
             </div>
 
             <div className="submit-btn-section">
-              <button className="btn cancel-btn" type="button" onClick={() => goBack(lastLocation)}>
+              <button
+                className="btn cancel-btn"
+                type="button"
+                onClick={() => goBack(lastLocation)}
+              >
                 Cancel
               </button>
-              <button className="btn submit-btn disabled" type="button" onClick={() => handleBankAccountSelection()}>
+              <button
+                className="btn submit-btn disabled"
+                type="button"
+                onClick={() => handleBankAccountSelection()}
+              >
                 Next
               </button>
             </div>

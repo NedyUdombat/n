@@ -32,7 +32,13 @@ const Wallet = (): JSX.Element => {
                 >
                   <button className="btn">
                     <span>
-                      <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width="25"
+                        height="24"
+                        viewBox="0 0 25 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"
@@ -56,7 +62,13 @@ const Wallet = (): JSX.Element => {
               <header className="accounts-section-header">
                 <h2 className="section-title">Account Information</h2>
                 <button className="btn icon">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M6.66634 13.3335H4.99967C4.55765 13.3335 4.13372 13.1579 3.82116 12.8453C3.5086 12.5328 3.33301 12.1089 3.33301 11.6668V5.00016C3.33301 4.55814 3.5086 4.13421 3.82116 3.82165C4.13372 3.50909 4.55765 3.3335 4.99967 3.3335H11.6663C12.1084 3.3335 12.5323 3.50909 12.8449 3.82165C13.1574 4.13421 13.333 4.55814 13.333 5.00016V6.66683M8.33301 16.6668H14.9997C15.4417 16.6668 15.8656 16.4912 16.1782 16.1787C16.4907 15.8661 16.6663 15.4422 16.6663 15.0002V8.3335C16.6663 7.89147 16.4907 7.46755 16.1782 7.15498C15.8656 6.84242 15.4417 6.66683 14.9997 6.66683H8.33301C7.89098 6.66683 7.46706 6.84242 7.1545 7.15498C6.84194 7.46755 6.66634 7.89147 6.66634 8.3335V15.0002C6.66634 15.4422 6.84194 15.8661 7.1545 16.1787C7.46706 16.4912 7.89098 16.6668 8.33301 16.6668Z"
                       stroke="#3D663D"
@@ -68,7 +80,10 @@ const Wallet = (): JSX.Element => {
                 </button>
               </header>
               <div className="card-body">
-                <p className="details">Top up your Awabah wallet directly from your other bank accounts</p>
+                <p className="details">
+                  Top up your Awabah wallet directly from your other bank
+                  accounts
+                </p>
                 <div className="info-pairs">
                   <p className="info-title">Account name</p>
                   <p className="info-value">Olatunji Ugoh Andrews</p>
@@ -86,7 +101,9 @@ const Wallet = (): JSX.Element => {
 
             <div className="cards-section card">
               <div className="view-saved-cards">View saved cards</div>
-              <div className="view-saved-beneficiaries">View saved beneficiaries</div>
+              <div className="view-saved-beneficiaries">
+                View saved beneficiaries
+              </div>
             </div>
           </section>
         </section>

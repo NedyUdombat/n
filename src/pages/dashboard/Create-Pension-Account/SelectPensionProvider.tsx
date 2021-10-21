@@ -33,7 +33,9 @@ const SelectPensionProvider = ({
   pencomDetails,
   setPencomDetails,
 }: SelectPensionProviderProps): JSX.Element => {
-  const [pensionProviders, setPensionProviders] = useState<PensionProviderProps[] | any>('');
+  const [pensionProviders, setPensionProviders] = useState<
+    PensionProviderProps[] | any
+  >('');
   const providers = useSelector((state: RootState) => state.pencom.providers);
   const dispatch = useDispatch();
 
@@ -73,7 +75,11 @@ const SelectPensionProvider = ({
     }
   }, [providers, pencomDetails]);
 
-  const handleRadioSelect = (e: ChangeEvent<HTMLInputElement>, optsArray: any, callback: (opts: any) => void) => {
+  const handleRadioSelect = (
+    e: ChangeEvent<HTMLInputElement>,
+    optsArray: any,
+    callback: (opts: any) => void,
+  ) => {
     const checkedOption = optsArray.find((opt: any) => opt.checked === true);
     const newOptsArray = optsArray.map((option: any) => {
       if (option.value === checkedOption?.value) {
@@ -102,7 +108,11 @@ const SelectPensionProvider = ({
   const renderCustomLabel = (customOption: any): JSX.Element => {
     return (
       <div className="custom-pension-radio-label">
-        <img src={customOption.image} alt={`${customOption.name} Logo`} className="provider-logo" />
+        <img
+          src={customOption.image}
+          alt={`${customOption.name} Logo`}
+          className="provider-logo"
+        />
         <p className="provider-name">{customOption.name}</p>
       </div>
     );
@@ -114,15 +124,19 @@ const SelectPensionProvider = ({
       {pensionProviders && pensionProviders.length < 1 ? (
         <div className="content">
           <h1 className="title">Sorry!</h1>
-          <p className="subtitle">There are currently no pension providers available, please check back later.</p>
+          <p className="subtitle">
+            There are currently no pension providers available, please check
+            back later.
+          </p>
         </div>
       ) : (
         <>
           <div className="content">
             <h1 className="title">Select a Pension Provider</h1>
             <p className="subtitle">
-              We partner with various pension providers to get you easier access to the Micro Pension Scheme. Note that
-              all providers offer the same rates.
+              We partner with various pension providers to get you easier access
+              to the Micro Pension Scheme. Note that all providers offer the
+              same rates.
             </p>
             <RadioInput
               customLabel={renderCustomLabel}
@@ -133,7 +147,11 @@ const SelectPensionProvider = ({
             />
           </div>
           <footer className="create-pension-account-footer">
-            <button type="button" className="next-btn" onClick={setShowPensionForm}>
+            <button
+              type="button"
+              className="next-btn"
+              onClick={setShowPensionForm}
+            >
               Begin Registration
             </button>
           </footer>

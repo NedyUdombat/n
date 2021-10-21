@@ -41,7 +41,13 @@ const Settings = (): JSX.Element => {
                 <div className="fw-bold title">Profile</div>
               </div>
               <span className="badge bg-none">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M9 5L16 12L9 19"
                     stroke="#929292"
@@ -62,7 +68,13 @@ const Settings = (): JSX.Element => {
                 <div className="fw-bold title">Security</div>
               </div>
               <span className="badge bg-none">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M9 5L16 12L9 19"
                     stroke="#929292"
@@ -83,7 +95,13 @@ const Settings = (): JSX.Element => {
                 <div className="fw-bold title">Saved banks & cards</div>
               </div>
               <span className="badge bg-none">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M9 5L16 12L9 19"
                     stroke="#929292"
@@ -98,10 +116,20 @@ const Settings = (): JSX.Element => {
         )}
         {activeCategory && (
           <section className="breadcrumbs">
-            <button type="button" className="btn home-btn" onClick={() => setActiveCategory('')}>
+            <button
+              type="button"
+              className="btn home-btn"
+              onClick={() => setActiveCategory('')}
+            >
               Settings
             </button>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M6 3.33398L10.6667 8.00065L6 12.6673"
                 stroke="#333333"
@@ -109,7 +137,11 @@ const Settings = (): JSX.Element => {
                 strokeLinejoin="round"
               />
             </svg>
-            <p className="category-name">{activeCategory === 'saved' ? 'Saved banks & cards' : activeCategory}</p>
+            <p className="category-name">
+              {activeCategory === 'saved'
+                ? 'Saved banks & cards'
+                : activeCategory}
+            </p>
           </section>
         )}
         {renderActiveCategory(activeCategory)}

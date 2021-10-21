@@ -32,7 +32,8 @@ const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 const RESET_PASSWORD_ERROR = 'RESET_PASSWORD_ERROR';
 
 export const register =
-  (userData: User, successCallBack: () => void, finallyCallBack: () => void) => async (dispatch: Dispatch) => {
+  (userData: User, successCallBack: () => void, finallyCallBack: () => void) =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch({ type: REGISTRATION_PROCESS });
       const {
@@ -50,7 +51,11 @@ export const register =
   };
 
 export const authenticate =
-  (userData: User, successCallBack: (bvnVerified: boolean) => void, finallyCallBack: () => void) =>
+  (
+    userData: User,
+    successCallBack: (bvnVerified: boolean) => void,
+    finallyCallBack: () => void,
+  ) =>
   async (dispatch: Dispatch) => {
     try {
       dispatch({ type: AUTHENTICATION_PROCESS });
@@ -70,19 +75,21 @@ export const authenticate =
     }
   };
 
-export const forgotPassword = (userData: Unknown, callBack: () => void) => async (dispatch: Dispatch) => {
-  try {
-    dispatch({ type: FORGOT_PASSWORD_PROCESS });
-    await forgotPasswordEndpoint(userData);
-    dispatch({ type: FORGOT_PASSWORD_SUCCESS });
-    callBack();
-  } catch (error: any) {
-    dispatch({ type: FORGOT_PASSWORD_ERROR, payload: error.response.data });
-  }
-};
+export const forgotPassword =
+  (userData: Unknown, callBack: () => void) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({ type: FORGOT_PASSWORD_PROCESS });
+      await forgotPasswordEndpoint(userData);
+      dispatch({ type: FORGOT_PASSWORD_SUCCESS });
+      callBack();
+    } catch (error: any) {
+      dispatch({ type: FORGOT_PASSWORD_ERROR, payload: error.response.data });
+    }
+  };
 
 export const resetPassword =
-  (userData: Unknown, callBack: () => void, finalCallBack: () => void) => async (dispatch: Dispatch) => {
+  (userData: Unknown, callBack: () => void, finalCallBack: () => void) =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch({ type: RESET_PASSWORD_PROCESS });
       const {
@@ -91,7 +98,13 @@ export const resetPassword =
       dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data });
       callBack();
     } catch (error: any) {
-      toast.error(`${error.response.data.data ? error.response.data.data.message : error.response.data.message}`);
+      toast.error(
+        `${
+          error.response.data.data
+            ? error.response.data.data.message
+            : error.response.data.message
+        }`,
+      );
       dispatch({ type: RESET_PASSWORD_ERROR, payload: error.response.data });
     } finally {
       finalCallBack();
@@ -104,7 +117,10 @@ const DEFAULT_STATE = {
   error: {},
 };
 
-export const authReducer = (state = DEFAULT_STATE, action?: { payload: unknown; type: string }) => {
+export const authReducer = (
+  state = DEFAULT_STATE,
+  action?: { payload: unknown; type: string },
+) => {
   switch (action?.type) {
     case REGISTRATION_PROCESS:
     case AUTHENTICATION_PROCESS:

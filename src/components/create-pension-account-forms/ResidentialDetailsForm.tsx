@@ -29,7 +29,9 @@ const ResidentialDetailsForm = ({
   states,
   cities,
 }: ResidentialDetailsFormProps) => {
-  const handleSetPersonalDetails = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handleSetPersonalDetails = (
+    e: ChangeEvent<HTMLInputElement>,
+  ): void | null => {
     const {
       target: { name, value },
     } = e;
@@ -69,7 +71,9 @@ const ResidentialDetailsForm = ({
       onInputChange: handleSetPersonalDetails,
       required: false,
       options: states
-        .filter((state: any) => state.CountryID === Number(pencomDetails?.countryRes))
+        .filter(
+          (state: any) => state.CountryID === Number(pencomDetails?.countryRes),
+        )
         .map((state: any) => {
           state.value = state.Id.toString();
           state.label = state.StateName;

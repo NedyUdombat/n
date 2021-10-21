@@ -71,7 +71,9 @@ const Saved = (): JSX.Element => {
   ];
 
   const renderModal = (): JSX.Element => {
-    return <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />;
+    return (
+      <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+    );
   };
 
   return (

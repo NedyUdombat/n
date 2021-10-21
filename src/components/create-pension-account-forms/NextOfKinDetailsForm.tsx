@@ -35,7 +35,9 @@ const NextOfKinDetailsForm = ({
   cities,
   relationships,
 }: NextOfKinDetailsFormProps): JSX.Element => {
-  const handleSetPersonalDetails = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handleSetPersonalDetails = (
+    e: ChangeEvent<HTMLInputElement>,
+  ): void | null => {
     const {
       target: { name, value },
     } = e;
@@ -124,7 +126,9 @@ const NextOfKinDetailsForm = ({
       label: 'Date of birth',
       placeholder: 'Date of birth',
       value: pencomDetails?.nokDateOfBirth
-        ? moment(pencomDetails?.nokDateOfBirth, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
+        ? moment(pencomDetails?.nokDateOfBirth, 'DD-DMMM-YYYY').format(
+            'YYYY-MM-DD',
+          )
         : pencomDetails?.nokDateOfBirth,
       disabled: false,
       onInputChange: handleSetPersonalDetails,
@@ -212,7 +216,10 @@ const NextOfKinDetailsForm = ({
       onInputChange: handleSetPersonalDetails,
       required: false,
       options: states
-        .filter((state: any) => state.CountryID === Number(pencomDetails?.nokCountryCode))
+        .filter(
+          (state: any) =>
+            state.CountryID === Number(pencomDetails?.nokCountryCode),
+        )
         .map((state: any) => {
           state.value = state.Id.toString();
           state.label = state.StateName;

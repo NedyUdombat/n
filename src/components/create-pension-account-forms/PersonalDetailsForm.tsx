@@ -41,7 +41,9 @@ const PersonalDetailsForm = ({
     setBtnDisabled(false);
   }, [pencomDetails, setBtnDisabled]);
 
-  const handleSetPersonalDetails = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handleSetPersonalDetails = (
+    e: ChangeEvent<HTMLInputElement>,
+  ): void | null => {
     const {
       target: { name, value },
     } = e;
@@ -136,7 +138,9 @@ const PersonalDetailsForm = ({
       label: 'Date of birth',
       placeholder: 'Date of birth',
       value: pencomDetails?.dateOfBirth
-        ? moment(pencomDetails?.dateOfBirth, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
+        ? moment(pencomDetails?.dateOfBirth, 'DD-DMMM-YYYY').format(
+            'YYYY-MM-DD',
+          )
         : pencomDetails?.dateOfBirth,
       disabled: false,
       onInputChange: handleSetPersonalDetails,
@@ -241,7 +245,10 @@ const PersonalDetailsForm = ({
       onInputChange: handleSetPersonalDetails,
       required: false,
       options: states
-        .filter((state: any) => state.CountryID === Number(pencomDetails?.nationality))
+        .filter(
+          (state: any) =>
+            state.CountryID === Number(pencomDetails?.nationality),
+        )
         .map((state: any) => {
           state.value = state.Id.toString();
           state.label = state.StateName;

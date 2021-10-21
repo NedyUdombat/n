@@ -25,8 +25,19 @@ const SideBar = ({ routeName }: SibeBarPropsTypes): JSX.Element => {
       </div>
       <div className="sidebar-menu">
         {menuArray.map((menu) => (
-          <li key={menu.name} className={activeMenu === menu.path ? 'active menu-list-item' : 'menu-list-item'}>
-            <Link to={menu.path} onClick={() => setActiveMenu(menu.path)} className="menu-list-item-link">
+          <li
+            key={menu.name}
+            className={
+              activeMenu === menu.path
+                ? 'active menu-list-item'
+                : 'menu-list-item'
+            }
+          >
+            <Link
+              to={menu.path}
+              onClick={() => setActiveMenu(menu.path)}
+              className="menu-list-item-link"
+            >
               <img
                 src={activeMenu === menu.path ? menu.iconActive : menu.icon}
                 alt="Page Icon"

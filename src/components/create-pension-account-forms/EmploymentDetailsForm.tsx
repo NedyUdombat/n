@@ -37,7 +37,9 @@ const EmploymentDetailsForm = ({
   states,
   cities,
 }: EmploymentDetailsFormProps) => {
-  const handleSetPersonalDetails = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handleSetPersonalDetails = (
+    e: ChangeEvent<HTMLInputElement>,
+  ): void | null => {
     const {
       target: { name, value },
     } = e;
@@ -105,7 +107,10 @@ const EmploymentDetailsForm = ({
       onInputChange: handleSetPersonalDetails,
       required: false,
       options: employers
-        .filter((state: any) => state.SectorID === Number(pencomDetails?.employerSector))
+        .filter(
+          (state: any) =>
+            state.SectorID === Number(pencomDetails?.employerSector),
+        )
         .map((state: any) => {
           state.value = state.Id;
           state.label = state.EmployerName;
@@ -152,7 +157,9 @@ const EmploymentDetailsForm = ({
       label: 'Date Employer Joined IPPIS?',
       placeholder: '',
       value: pencomDetails?.ippisJoinedDate
-        ? moment(pencomDetails?.ippisJoinedDate, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
+        ? moment(pencomDetails?.ippisJoinedDate, 'DD-DMMM-YYYY').format(
+            'YYYY-MM-DD',
+          )
         : pencomDetails?.ippisJoinedDate,
       disabled: false,
       onInputChange: handleSetPersonalDetails,
@@ -197,7 +204,10 @@ const EmploymentDetailsForm = ({
       onInputChange: handleSetPersonalDetails,
       required: false,
       options: states
-        .filter((state: any) => state.CountryID === Number(pencomDetails?.employerCountry))
+        .filter(
+          (state: any) =>
+            state.CountryID === Number(pencomDetails?.employerCountry),
+        )
         .map((state: any) => {
           state.value = state.Id.toString();
           state.label = state.StateName;
@@ -344,7 +354,9 @@ const EmploymentDetailsForm = ({
       label: 'Date of First appointment',
       placeholder: '',
       value: pencomDetails?.dateOfAppointment
-        ? moment(pencomDetails?.dateOfAppointment, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
+        ? moment(pencomDetails?.dateOfAppointment, 'DD-DMMM-YYYY').format(
+            'YYYY-MM-DD',
+          )
         : pencomDetails?.dateOfAppointment,
       disabled: false,
       onInputChange: handleSetPersonalDetails,
@@ -358,7 +370,9 @@ const EmploymentDetailsForm = ({
       label: 'Date of Currrent appointment',
       placeholder: '',
       value: pencomDetails?.dateOfCurrentEmployment
-        ? moment(pencomDetails?.dateOfCurrentEmployment, 'DD-DMMM-YYYY').format('YYYY-MM-DD')
+        ? moment(pencomDetails?.dateOfCurrentEmployment, 'DD-DMMM-YYYY').format(
+            'YYYY-MM-DD',
+          )
         : pencomDetails?.dateOfCurrentEmployment,
       disabled: false,
       onInputChange: handleSetPersonalDetails,

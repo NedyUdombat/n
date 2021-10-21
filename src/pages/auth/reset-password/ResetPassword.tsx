@@ -1,4 +1,9 @@
-import React, { useState, useEffect, ChangeEvent, MouseEventHandler } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ChangeEvent,
+  MouseEventHandler,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -45,7 +50,11 @@ const ResetPassword = (): JSX.Element => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const errorHandler = (field: string, error: boolean, errorMessage: string) => {
+  const errorHandler = (
+    field: string,
+    error: boolean,
+    errorMessage: string,
+  ) => {
     const newErrorObject = Object.assign({}, errors);
     if (!error) {
       newErrorObject[field] = errorMessage;
@@ -56,7 +65,9 @@ const ResetPassword = (): JSX.Element => {
     }
   };
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handlePasswordChange = (
+    e: ChangeEvent<HTMLInputElement>,
+  ): void | null => {
     const {
       target: { value, id },
     } = e;
@@ -66,7 +77,11 @@ const ResetPassword = (): JSX.Element => {
       setConfirmNewPassword(value);
     }
     const passwordErrors = passwordSchema.validate(value);
-    errorHandler(id === 'password' ? 'password' : 'confirmNewPassword', passwordErrors, 'Password is invalid');
+    errorHandler(
+      id === 'password' ? 'password' : 'confirmNewPassword',
+      passwordErrors,
+      'Password is invalid',
+    );
   };
 
   useEffect(() => {
@@ -118,7 +133,9 @@ const ResetPassword = (): JSX.Element => {
               required={true}
             />
 
-            {password.length > 0 && <PasswordStrengthIndicator password={password} />}
+            {password.length > 0 && (
+              <PasswordStrengthIndicator password={password} />
+            )}
 
             <Input
               type="password"
@@ -133,13 +150,20 @@ const ResetPassword = (): JSX.Element => {
             />
 
             {isLoading ? (
-              <button type="button" className="btn create-btn disabled" onClick={() => null} disabled={true}>
+              <button
+                type="button"
+                className="btn create-btn disabled"
+                onClick={() => null}
+                disabled={true}
+              >
                 <i className="fas fa-circle-notch fa-pulse" />
               </button>
             ) : (
               <button
                 type="button"
-                className={`btn create-btn${disabled === true ? ` disabled` : ``}`}
+                className={`btn create-btn${
+                  disabled === true ? ` disabled` : ``
+                }`}
                 onClick={handleSubmit}
                 disabled={disabled}
               >
@@ -149,7 +173,11 @@ const ResetPassword = (): JSX.Element => {
           </>
         ) : (
           <div className="success-container">
-            <img src={SuccessIcon} alt="Success Icon" className="success-icon" />
+            <img
+              src={SuccessIcon}
+              alt="Success Icon"
+              className="success-icon"
+            />
             <p className="form-title">Password reset!</p>
             <Link to={{ pathname: ROUTE_URLS.DASHBOARD_URL }} className="link">
               Sign In

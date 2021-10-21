@@ -32,7 +32,13 @@ const Micro = (): JSX.Element => {
                 >
                   <button className="btn">
                     <span>
-                      <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width="25"
+                        height="24"
+                        viewBox="0 0 25 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"
@@ -53,7 +59,13 @@ const Micro = (): JSX.Element => {
                 <p className="title">
                   Available to withdraw
                   <span>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         fillRule="evenodd"
                         clipRule="evenodd"
@@ -75,7 +87,13 @@ const Micro = (): JSX.Element => {
                 >
                   <button className="btn">
                     <span>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"

@@ -13,7 +13,8 @@ const BVN_VERIFICAITON_SUCCESS = 'BVN_VERIFICAITON_SUCCESS';
 const BVN_VERIFICAITON_ERROR = 'BVN_VERIFICAITON_ERROR';
 
 export const verifyBvn =
-  (bvnData: Unknown, callBack: () => void, finalCallBack: () => void) => async (dispatch: Dispatch) => {
+  (bvnData: Unknown, callBack: () => void, finalCallBack: () => void) =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch({ type: BVN_VERIFICAITON_PROCESS });
       const {
@@ -34,7 +35,10 @@ const DEFAULT_STATE = {
   bvnVerified: false,
 };
 
-export const bvnReducer = (state = DEFAULT_STATE, action?: { payload: unknown; type: string }) => {
+export const bvnReducer = (
+  state = DEFAULT_STATE,
+  action?: { payload: unknown; type: string },
+) => {
   switch (action?.type) {
     case BVN_VERIFICAITON_PROCESS:
       return {

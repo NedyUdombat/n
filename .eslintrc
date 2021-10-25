@@ -42,7 +42,7 @@
       "no-param-reassign": 0,
       "comma-dangle": 0,
       "curly": ["error", "multi-line"],
-      "no-console": "warn",
+      "no-console": "off",
       "no-unused-vars": "off",
       "no-shadow": [
         "error",

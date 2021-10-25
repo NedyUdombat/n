@@ -24,7 +24,7 @@ import { ROUTE_URLS } from '../../../routes/RouteUrls';
 import { register } from '../../../store/modules/auth';
 import {
   emailRegex,
-  nameSchema,
+  singleNameSchema,
   passwordSchema,
   phonenumberSchema,
 } from '../../../utils/validators';
@@ -36,14 +36,16 @@ const validateForm = (errors: ErrorsType) => {
 };
 
 const Registration = (): JSX.Element => {
-  const [name, setName] = useState<string>('');
+  const [firstName, setFirstname] = useState<string>('');
+  const [lastName, setLastname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(true);
   const [inputDisabled, setInputDisabled] = useState<boolean>(false);
   const [errors, setErrors] = useState<ErrorsType>({
-    name: null,
+    firstName: null,
+    lastName: null,
     email: null,
     phoneNumber: null,
     password: null,
@@ -68,13 +70,21 @@ const Registration = (): JSX.Element => {
     }
   };
 
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
+  const handleNameChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    type: string,
+  ): void | null => {
     const {
       target: { value },
     } = e;
-    setName(value);
-    const nameErrors = nameSchema.validate(value);
-    errorHandler('name', nameErrors, 'Name is invalid');
+    const nameErrors = singleNameSchema.validate(value);
+    if (type === 'firstName') {
+      setFirstname(value);
+      errorHandler('firstName', nameErrors, 'Name is invalid');
+    } else {
+      setLastname(value);
+      errorHandler('lastName', nameErrors, 'Name is invalid');
+    }
   };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>): void | null => {
@@ -122,7 +132,7 @@ const Registration = (): JSX.Element => {
     setInputDisabled(true);
     dispatch(
       register(
-        { name, email, phoneNumber, password },
+        { firstName, lastName, email, phoneNumber, password },
         () => history.push(ROUTE_URLS.VERIFICATION_URL),
         () => {
           setInputDisabled(false);
@@ -142,14 +152,35 @@ const Registration = (): JSX.Element => {
 
         <Input
           type="text"
-          id="name"
-          name="name"
-          label="Name"
-          placeholder="Full Name"
-          value={name}
+          id="firstName"
+          name="firstName"
+          label="First Name"
+          placeholder="First Name"
+          value={firstName}
           disabled={inputDisabled}
-          onInputChange={handleNameChange}
+          onInputChange={(e) => handleNameChange(e, 'firstName')}
           required={true}
+          hasError={
+            errors.firstName !== null && errors.firstName !== 'valid'
+              ? true
+              : false
+          }
+        />
+        <Input
+          type="text"
+          id="lastName"
+          name="lastName"
+          label="Last Name"
+          placeholder="Last Name"
+          value={lastName}
+          disabled={inputDisabled}
+          onInputChange={(e) => handleNameChange(e, 'lastName')}
+          required={true}
+          hasError={
+            errors.lastName !== null && errors.lastName !== 'valid'
+              ? true
+              : false
+          }
         />
         <Input
           type="email"
@@ -161,6 +192,9 @@ const Registration = (): JSX.Element => {
           disabled={inputDisabled}
           onInputChange={handleEmailChange}
           required={true}
+          hasError={
+            errors.email !== null && errors.email !== 'valid' ? true : false
+          }
         />
         <TelInput
           id="phone"
@@ -182,6 +216,11 @@ const Registration = (): JSX.Element => {
           disabled={inputDisabled}
           onInputChange={handlePasswordChange}
           required={true}
+          hasError={
+            errors.password !== null && errors.password !== 'valid'
+              ? true
+              : false
+          }
         />
 
         {password.length > 0 && (

@@ -36,7 +36,7 @@ const DashboardLayout = ({
       {user && (
         <>
           <NavBar user={user} />
-          {/* <SideBar routeName={routeName} /> */}
+          <SideBar routeName={routeName} />
           <main className="main">
             <div className="child-section">{children}</div>
           </main>

@@ -14,24 +14,25 @@ interface NavBarPropsTypes {
 }
 
 const NavBar = ({ user }: NavBarPropsTypes): JSX.Element => {
-  const capitalize = (name: string | undefined) =>
-    name
-      ?.split(' ')
-      .map((value) => name.replace(value[0], value[0].toUpperCase()))
-      .join(' ');
+  const capitalize = (
+    firstName: string | undefined,
+    lastName: string | undefined,
+  ) =>
+    `${
+      firstName && firstName.replace(firstName[0], firstName[0].toUpperCase())
+    } ${lastName && lastName.replace(lastName[0], lastName[0].toUpperCase())}`;
 
-  const initials = (name: string | undefined) =>
-    name
-      ?.split(' ')
-      .map((value) => value[0])
-      .join('');
+  const initials = (
+    firstName: string | undefined,
+    lastName: string | undefined,
+  ) => `${firstName && firstName[0]}${lastName && lastName[0]}`;
 
   return (
     <div className="topbar">
       <div className="topbar-header">
         <img src={AwabahLogo} alt="Awabah Logo" className="logo" />
       </div>
-      {user && (
+      {user?.firstName && (
         <div className="dropdown">
           <button
             className="btn btn-transparent dropdown-toggle"
@@ -42,9 +43,13 @@ const NavBar = ({ user }: NavBarPropsTypes): JSX.Element => {
             aria-expanded="false"
           >
             <div className="topbar-profile">
-              <p className="username">{user && capitalize(user?.name)}</p>
+              <p className="username">
+                {user && capitalize(user?.firstName, user?.lastName)}
+              </p>
               <div className="avatar">
-                <p className="initials">{user && initials(user?.name)}</p>
+                <p className="initials">
+                  {user && initials(user?.firstName, user?.lastName)}
+                </p>
               </div>
             </div>
           </button>

@@ -11,7 +11,8 @@ interface InputProps {
   disabled?: boolean | undefined;
   value?: string | number;
   required?: boolean | undefined;
-  optional?: boolean;
+  optional?: boolean | undefined;
+  hasError?: boolean | undefined;
 }
 
 const Input = ({
@@ -26,6 +27,7 @@ const Input = ({
   value,
   required,
   optional,
+  hasError,
 }: InputProps): JSX.Element => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [inputType, setInputType] = React.useState('text');
@@ -49,7 +51,9 @@ const Input = ({
         type={inputType}
         id={id}
         name={name}
-        className={`form-control${inputClassName ? ` ${inputClassName}` : ''}`}
+        className={`form-control${inputClassName ? ` ${inputClassName}` : ''}${
+          hasError ? ' has-error' : ''
+        }`}
         placeholder={placeholder}
         onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(e)}
         disabled={disabled}

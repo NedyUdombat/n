@@ -44,6 +44,7 @@ phonenumberSchema
   .spaces();
 
 nameSchema.is().min(3).has().lowercase().has().not().digits().has().spaces();
+
 singleNameSchema
   .is()
   .min(3)
@@ -55,6 +56,7 @@ singleNameSchema
   .has()
   .not()
   .spaces();
+
 bvnSchema
   .is()
   .min(10)
@@ -78,6 +80,7 @@ const passwordPartsRegex = {
   upperCaseRegex: /[A-Z]/g,
   numberRegex: /[0-9]/g,
   minLength: 8,
+  specialCharRegex: /[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
 };
 
 export {

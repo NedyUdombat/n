@@ -14,6 +14,7 @@ const PasswordStrengthIndicator = ({
   const [upperCaseCheck, setUpperCaseCheck] = useState<boolean>(false);
   const [numberCheck, setNumberCheck] = useState<boolean>(false);
   const [lengthCheck, setLengthCheck] = useState<boolean>(false);
+  const [specialCharCheck, setSpecialCharCheck] = useState<boolean>(false);
 
   useEffect(() => {
     if (password) {
@@ -37,11 +38,17 @@ const PasswordStrengthIndicator = ({
       } else {
         setLengthCheck(false);
       }
+      if (passwordPartsRegex.specialCharRegex.test(password)) {
+        setSpecialCharCheck(true);
+      } else {
+        setSpecialCharCheck(false);
+      }
     } else {
       setLowerCaseCheck(false);
       setUpperCaseCheck(false);
       setNumberCheck(false);
       setLengthCheck(false);
+      setSpecialCharCheck(false);
     }
   }, [password]);
 
@@ -62,6 +69,10 @@ const PasswordStrengthIndicator = ({
       <li className={`list-item${lengthCheck ? ' check' : ''}`}>
         <i className="fa-li fa fa-check" />
         <p className="list-title">at least eight(8) character</p>
+      </li>
+      <li className={`list-item${specialCharCheck ? ' check' : ''}`}>
+        <i className="fa-li fa fa-check" />
+        <p className="list-title">at least 1 special character</p>
       </li>
     </ul>
   );

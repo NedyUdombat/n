@@ -9,6 +9,7 @@ import {
 /** Types */
 import { Code } from '../../@types/token.type';
 import { Dispatch } from '../../@types/store.type';
+import { ROUTE_URLS } from '../../routes/RouteUrls';
 
 const VERIFICATION_PROCESS = 'VERIFICATION_PROCESS';
 const VERIFICATION_SUCCESS = 'VERIFICATION_SUCCESS';
@@ -19,28 +20,21 @@ const REQUEST_VERIFICATION_CODE_SUCCESS = 'REQUEST_VERIFICATION_CODE_SUCCESS';
 const REQUEST_VERIFICATION_CODE_ERROR = 'REQUEST_VERIFICATION_CODE_ERROR';
 
 export const verify =
-  (codeData: Code, successCallBack: () => void, finallyCallBack: () => void) =>
-  async (dispatch: Dispatch) => {
+  (codeData: Code, history: any) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: VERIFICATION_PROCESS });
       await verificationEndpoint(codeData);
       dispatch({ type: VERIFICATION_SUCCESS });
       toast.success('Phone number successfully verified. Please Log in!');
-      successCallBack();
+      history.push(ROUTE_URLS.AUTHENTICATION_URL);
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);
       dispatch({ type: VERIFICATION_ERROR, payload: error.response.data });
-    } finally {
-      finallyCallBack();
     }
   };
 
 export const resendCode =
-  (
-    inputData: { email: string },
-    successCallBack: () => void,
-    finallyCallBack: () => void,
-  ) =>
+  (inputData: { email: string }, history: any) =>
   async (dispatch: Dispatch) => {
     try {
       dispatch({ type: REQUEST_VERIFICATION_CODE_PROCESS });
@@ -49,15 +43,13 @@ export const resendCode =
       toast.success(
         'Verificaiton Code has been re-sent to you phone number, please try again!',
       );
-      successCallBack();
+      history.push(ROUTE_URLS.VERIFICATION_URL);
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);
       dispatch({
         type: REQUEST_VERIFICATION_CODE_ERROR,
         payload: error.response.data,
       });
-    } finally {
-      finallyCallBack();
     }
   };
 

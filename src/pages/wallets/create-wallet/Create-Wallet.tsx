@@ -22,9 +22,6 @@ import { Location } from '../../../@types/router.type';
 import { createWallet } from '../../../store/modules/wallet';
 import { bvnSchema } from '../../../utils/validators';
 
-/** Util(s) */
-import { ROUTE_URLS } from '../../../routes/RouteUrls';
-
 interface KYCPropsTypes {
   location: { state: { from: string } };
 }
@@ -111,18 +108,12 @@ const CreateWallet = ({
     dispatch(
       createWallet(
         { dateOfBirth: moment(dateOfBirth).format('DD-MMM-YYYY'), pin, bvn },
-        () =>
-          history.push(
-            location?.state ? location?.state?.from : ROUTE_URLS.DASHBOARD_URL,
-          ),
-        () => {
-          setInputDisabled(false);
-          setBvn('');
-          setPin('');
-          setDateOfBirth('');
-        },
+        history,
+        location,
       ),
     );
+    setInputDisabled(false);
+    setPin('');
   };
 
   return (

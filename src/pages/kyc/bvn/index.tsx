@@ -23,9 +23,6 @@ import { ErrorsType } from '../../../@types/error.type';
 import { verifyBvn } from '../../../store/modules/bvn';
 import { singleNameSchema, bvnSchema } from '../../../utils/validators';
 
-/** Util(s) */
-import { ROUTE_URLS } from '../../../routes/RouteUrls';
-
 interface KYCPropsTypes {
   location: { state: { from: string } };
 }
@@ -116,18 +113,8 @@ const Index = ({
     e.preventDefault();
     setInputDisabled(true);
 
-    dispatch(
-      verifyBvn(
-        { firstName, lastName, bvn },
-        () => history.push(ROUTE_URLS.CREATE_WALLET),
-        () => {
-          setInputDisabled(false);
-          setBvn('');
-          setLastName('');
-          setFirstName('');
-        },
-      ),
-    );
+    dispatch(verifyBvn({ firstName, lastName, bvn }, history));
+    setInputDisabled(false);
   };
 
   return (

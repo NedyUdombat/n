@@ -15,6 +15,9 @@ import { Dispatch } from '../../@types/store.type';
 import { Unknown } from '../../@types/util.type';
 import { http } from '../../api/client';
 
+/** Util(s) */
+import { ROUTE_URLS } from '../../routes/RouteUrls';
+
 const REGISTRATION_PROCESS = 'REGISTRATION_PROCESS';
 const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 const REGISTRATION_ERROR = 'REGISTRATION_ERROR';
@@ -32,8 +35,7 @@ const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 const RESET_PASSWORD_ERROR = 'RESET_PASSWORD_ERROR';
 
 export const register =
-  (userData: User, successCallBack: () => void, finallyCallBack: () => void) =>
-  async (dispatch: Dispatch) => {
+  (userData: User, history: any) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: REGISTRATION_PROCESS });
       const {
@@ -41,22 +43,15 @@ export const register =
       } = await registrationEndpoint(userData);
       dispatch({ type: REGISTRATION_SUCCESS, payload: data });
       toast.success('Account successfully created');
-      successCallBack();
+      history.push(ROUTE_URLS.VERIFICATION_URL);
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);
       dispatch({ type: REGISTRATION_ERROR, payload: error.response.data });
-    } finally {
-      finallyCallBack();
     }
   };
 
 export const authenticate =
-  (
-    userData: User,
-    successCallBack: (bvnVerified: boolean) => void,
-    finallyCallBack: () => void,
-  ) =>
-  async (dispatch: Dispatch) => {
+  (userData: User, history: any) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: AUTHENTICATION_PROCESS });
       const {
@@ -66,37 +61,34 @@ export const authenticate =
       http.defaults.headers['x-auth-token'] = data.token;
       dispatch({ type: AUTHENTICATION_SUCCESS, payload: data });
       toast.success('Welcome Back!');
-      successCallBack(data.bvnVerified);
+      history.push(
+        data.bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.DASHBOARD_URL,
+      );
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);
       dispatch({ type: AUTHENTICATION_ERROR, payload: error.response.data });
-    } finally {
-      finallyCallBack();
     }
   };
 
 export const forgotPassword =
-  (userData: Unknown, callBack: () => void) => async (dispatch: Dispatch) => {
+  (userData: Unknown) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: FORGOT_PASSWORD_PROCESS });
       await forgotPasswordEndpoint(userData);
       dispatch({ type: FORGOT_PASSWORD_SUCCESS });
-      callBack();
     } catch (error: any) {
       dispatch({ type: FORGOT_PASSWORD_ERROR, payload: error.response.data });
     }
   };
 
 export const resetPassword =
-  (userData: Unknown, callBack: () => void, finalCallBack: () => void) =>
-  async (dispatch: Dispatch) => {
+  (userData: Unknown) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: RESET_PASSWORD_PROCESS });
       const {
         data: { data },
       } = await resetPasswordEndpoint(userData);
       dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data });
-      callBack();
     } catch (error: any) {
       toast.error(
         `${
@@ -106,8 +98,6 @@ export const resetPassword =
         }`,
       );
       dispatch({ type: RESET_PASSWORD_ERROR, payload: error.response.data });
-    } finally {
-      finalCallBack();
     }
   };
 

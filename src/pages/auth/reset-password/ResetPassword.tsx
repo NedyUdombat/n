@@ -98,20 +98,16 @@ const ResetPassword = (): JSX.Element => {
     setInputDisabled(true);
 
     dispatch(
-      resetPassword(
-        {
-          password,
-          confirm: confirmNewPassword,
-          token: location?.search?.split('?token=')[1],
-        },
-        () => setShowSuccessMessage(true),
-        () => {
-          setPassword('');
-          setConfirmNewPassword('');
-          setInputDisabled(false);
-        },
-      ),
+      resetPassword({
+        password,
+        confirm: confirmNewPassword,
+        token: location?.search?.split('?token=')[1],
+      }),
     );
+    setShowSuccessMessage(true);
+    setPassword('');
+    setConfirmNewPassword('');
+    setInputDisabled(false);
   };
 
   return (

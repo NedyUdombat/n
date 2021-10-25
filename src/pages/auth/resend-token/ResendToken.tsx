@@ -87,13 +87,11 @@ const ResendToken = (): JSX.Element => {
         {
           email,
         },
-        () => history.push(ROUTE_URLS.VERIFICATION_URL),
-        () => {
-          setInputDisabled(false);
-          setEmail('');
-        },
+        history,
       ),
     );
+    setInputDisabled(false);
+    setEmail('');
   };
 
   return (

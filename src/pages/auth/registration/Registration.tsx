@@ -131,15 +131,10 @@ const Registration = (): JSX.Element => {
 
     setInputDisabled(true);
     dispatch(
-      register(
-        { firstName, lastName, email, phoneNumber, password },
-        () => history.push(ROUTE_URLS.VERIFICATION_URL),
-        () => {
-          setInputDisabled(false);
-          setPassword('');
-        },
-      ),
+      register({ firstName, lastName, email, phoneNumber, password }, history),
     );
+    setInputDisabled(false);
+    setPassword('');
   };
 
   return (

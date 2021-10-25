@@ -36,12 +36,10 @@ const Verification = (): JSX.Element => {
         {
           token: value.toLowerCase(),
         },
-        () => history.push(ROUTE_URLS.AUTHENTICATION_URL),
-        () => {
-          setInputDisabled(false);
-        },
+        history,
       ),
     );
+    setInputDisabled(false);
   };
 
   return (

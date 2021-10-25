@@ -7,25 +7,23 @@ import { Unknown } from '../../@types/util.type';
 
 /** Config(s) */
 import config from '../../config';
+import { ROUTE_URLS } from '../../routes/RouteUrls';
 
 const BVN_VERIFICAITON_PROCESS = 'BVN_VERIFICAITON_PROCESS';
 const BVN_VERIFICAITON_SUCCESS = 'BVN_VERIFICAITON_SUCCESS';
 const BVN_VERIFICAITON_ERROR = 'BVN_VERIFICAITON_ERROR';
 
 export const verifyBvn =
-  (bvnData: Unknown, callBack: () => void, finalCallBack: () => void) =>
-  async (dispatch: Dispatch) => {
+  (bvnData: Unknown, history: any) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: BVN_VERIFICAITON_PROCESS });
       const {
         data: { data },
       } = await bvnVerificationEndpoint(bvnData);
       dispatch({ type: BVN_VERIFICAITON_SUCCESS, payload: data.bvnVerified });
-      callBack();
+      history.push(ROUTE_URLS.CREATE_WALLET);
     } catch (error: any) {
       dispatch({ type: BVN_VERIFICAITON_ERROR, payload: error.response.data });
-    } finally {
-      finalCallBack();
     }
   };
 

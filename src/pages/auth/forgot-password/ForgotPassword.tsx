@@ -84,16 +84,12 @@ const ForgotPassword = (): JSX.Element => {
     setInputDisabled(true);
 
     dispatch(
-      forgotPassword(
-        {
-          email,
-        },
-        () => {
-          setInputDisabled(false);
-          setShowSuccessMessage(true);
-        },
-      ),
+      forgotPassword({
+        email,
+      }),
     );
+    setInputDisabled(false);
+    setShowSuccessMessage(true);
   };
 
   return (

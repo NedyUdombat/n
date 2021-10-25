@@ -1,5 +1,5 @@
 /** Inactive Icon(s) */
-import HomeIcon from '../../assets/icons/arrowLeft.svg';
+import HomeIcon from '../../assets/icons/tab-icons/Home.svg';
 import BoxIcon from '../../assets/icons/tab-icons/Box.svg';
 import WalletIcon from '../../assets/icons/tab-icons/Wallet.svg';
 import CogIcon from '../../assets/icons/tab-icons/Cog.svg';

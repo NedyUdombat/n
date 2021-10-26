@@ -98,11 +98,6 @@ const App = () => {
       />
       <PrivateRoute
         exact
-        path={ROUTE_URLS.SELECT_PENSION_PROVIDER}
-        component={SelectPensionProvider}
-      />
-      <PrivateRoute
-        exact
         path={ROUTE_URLS.CREATE_PENSION_FORM}
         component={PensionForm}
       />

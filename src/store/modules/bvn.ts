@@ -21,7 +21,7 @@ export const verifyBvn =
         data: { data },
       } = await bvnVerificationEndpoint(bvnData);
       dispatch({ type: BVN_VERIFICAITON_SUCCESS, payload: data.bvnVerified });
-      history.push(ROUTE_URLS.CREATE_WALLET);
+      history.push(ROUTE_URLS.DASHBOARD_URL);
     } catch (error: any) {
       dispatch({ type: BVN_VERIFICAITON_ERROR, payload: error.response.data });
     }

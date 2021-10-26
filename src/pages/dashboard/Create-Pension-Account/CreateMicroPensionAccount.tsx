@@ -65,7 +65,7 @@ const CreateMicroPensionAccount = ({
       <footer className="create-pension-account-footer">
         <Link
           to={{
-            pathname: ROUTE_URLS.SELECT_PENSION_PROVIDER,
+            pathname: ROUTE_URLS.CREATE_PENSION_FORM,
             state: { from: pathname },
           }}
           className="next-btn"

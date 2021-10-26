@@ -62,7 +62,7 @@ export const authenticate =
       dispatch({ type: AUTHENTICATION_SUCCESS, payload: data });
       toast.success('Welcome Back!');
       history.push(
-        data.bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.DASHBOARD_URL,
+        data.bvnVerified ? ROUTE_URLS.DASHBOARD_URL : ROUTE_URLS.KYC,
       );
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);

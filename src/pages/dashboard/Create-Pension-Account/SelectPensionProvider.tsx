@@ -1,4 +1,10 @@
-import React, { useState, ChangeEvent, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  ChangeEvent,
+  useReducer,
+  useCallback,
+  useEffect,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Component(s) */
@@ -6,7 +12,11 @@ import InnerPageNavBar from '../../../components/navbar/InnerPageNavBar';
 import RadioInput from '../../../components/input/RadioInput';
 
 /** Util(s) */
-import { UPDATE_PROVIDER_DETAILS } from '../../../store/modules/create-pencom';
+import {
+  DefaultPencomDetails,
+  PencomDetailsReducer,
+  UPDATE_PROVIDER_DETAILS,
+} from '../../../store/modules/create-pencom';
 
 /** Action(s) */
 import { getProviders } from '../../../store/modules/pencom';
@@ -36,6 +46,7 @@ const SelectPensionProvider = ({
   const [pensionProviders, setPensionProviders] = useState<
     PensionProviderProps[] | any
   >('');
+
   const providers = useSelector((state: RootState) => state.pencom.providers);
   const dispatch = useDispatch();
 

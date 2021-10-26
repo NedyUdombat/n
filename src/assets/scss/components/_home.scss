@@ -52,44 +52,94 @@
 }
 
 .module {
-  &.home {
-    .saving-prompt-section {
-      background: $color-fef6cf;
-      border-radius: 40px;
-      display: flex;
-      height: 40px;
-      margin-bottom: 24px;
-      padding: 8px 16px;
+  .saving-prompt-section {
+    background: $color-fef6cf;
+    border-radius: 40px;
+    display: flex;
+    height: 40px;
+    margin-bottom: 24px;
+    padding: 8px 16px;
 
-      .icon {
-        height: 24px;
-        width: 24px;
-      }
+    .icon {
+      height: 24px;
+      width: 24px;
+    }
 
-      .text {
+    .text {
+      color: $color-ec9b40;
+      font-size: 14px;
+      line-height: 24px;
+      margin-left: 8px;
+
+      .modal-trigger {
+        background: transparent;
+        border: 0;
+        border-radius: 8px;
         color: $color-ec9b40;
-        font-size: 14px;
-        line-height: 24px;
-        margin-left: 8px;
+        font-weight: 700;
+        height: fit-content;
+        padding: 0;
+        text-decoration: underline;
 
-        .modal-trigger {
-          background: transparent;
-          border: 0;
-          border-radius: 8px;
-          color: $color-ec9b40;
-          font-weight: 700;
-          height: fit-content;
-          padding: 0;
-          text-decoration: underline;
-
-          &:focus {
-            box-shadow: none;
-            outline: 0;
-          }
+        &:focus {
+          box-shadow: none;
+          outline: 0;
         }
       }
     }
+  }
 
+  .not-created-section {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px $col-000-12;
+    border: 0;
+    border-radius: 8px;
+    padding: 40px 100px;
+
+    .warning-icon {
+      height: 120px;
+      width: 120px;
+    }
+
+    .info {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 20px;
+      text-align: center;
+      color: $color-808080;
+    }
+
+    .card-button-section {
+      margin-top: 20px;
+
+      .create-wallet-link {
+        border-radius: 8px;
+        color: $red;
+
+        &:hover {
+          color: initial;
+        }
+      }
+
+      .btn {
+        background: $green;
+        border-radius: 8px;
+        height: 48px;
+        padding: 0 32px;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &.home {
     .balance-section {
       display: flex;
       margin-bottom: 40px;
@@ -140,7 +190,6 @@
               font-weight: 600;
               font-size: 32px;
               font-style: normal;
-              font-weight: bold;
               line-height: 32px;
               margin-top: 8px;
             }
@@ -215,6 +264,20 @@
   }
 
   .module {
+    .not-created-section {
+      height: fit-content;
+      padding: 20px;
+
+      .card-button-section {
+        width: -webkit-fill-available;
+
+        .btn {
+          width: 100%;
+          padding: 0 8px;
+        }
+      }
+    }
+
     &.home {
       .saving-prompt-section {
         align-items: center;

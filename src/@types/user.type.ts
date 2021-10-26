@@ -4,4 +4,13 @@ export interface User {
   firstName?: string;
   lastName?: string;
   phoneNumber?: string;
+  verificationStatus?: boolean;
+  wallets?: any[];
+  bvnVerified?: boolean;
+  id?: string;
+  verificationToken?: string;
+  verificationTokenExpires?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  pencoms?: any[];
 }

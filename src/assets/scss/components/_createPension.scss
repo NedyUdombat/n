@@ -353,5 +353,20 @@
         }
       }
     }
+
+    &.select-provider {
+      .form-control-group {
+        &.pension-radio {
+
+          .form-check {
+            width: -webkit-fill-available;
+
+            .form-check-label {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
   }
 }

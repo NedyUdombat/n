@@ -1,4 +1,10 @@
-import React, { useState, useReducer, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useReducer,
+  useCallback,
+  useEffect,
+  MouseEventHandler,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -30,6 +36,7 @@ import {
   getIndustries,
   getEmployers,
   getRelationships,
+  enrolCustomer,
 } from '../../../store/modules/pencom';
 import {
   PencomDetailsReducer,
@@ -196,6 +203,12 @@ const PensionForm = ({
 
   const handleBack = () => {
     setActiveTab(activeTab - 1);
+  };
+
+  const handleSubmitEnrolment: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+
+    dispatch(enrolCustomer(pencomDetails));
   };
 
   const renderForms = () => {

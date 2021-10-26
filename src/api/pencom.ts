@@ -22,3 +22,5 @@ export const getIndustriesEndpoint = async () =>
   await http.get('/micro-pension/industry');
 export const getEmployersEndpoint = async () =>
   await http.get('/micro-pension/employer');
+export const enrolCustomerEndpoint = async (pencomDetails: any) =>
+  await http.post('/micro-pension/enrol', { ...pencomDetails });

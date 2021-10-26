@@ -11,6 +11,7 @@ import {
   getIndustriesEndpoint,
   getEmployersEndpoint,
   getSectorsEndpoint,
+  enrolCustomerEndpoint,
 } from '../../api/pencom';
 
 /** Type(s) */
@@ -59,6 +60,10 @@ const GET_EMPLOYERS_ERROR = 'GET_EMPLOYERS_ERROR';
 const GET_EMPLOYMENT_SECTOR_PROCESS = 'GET_EMPLOYMENT_SECTOR_PROCESS';
 const GET_EMPLOYMENT_SECTOR_SUCCESS = 'GET_EMPLOYMENT_SECTOR_SUCCESS';
 const GET_EMPLOYMENT_SECTOR_ERROR = 'GET_EMPLOYMENT_SECTOR_ERROR';
+
+const ENROL_CUSTOMER_PROCESS = 'ENROL_CUSTOMER_PROCESS';
+const ENROL_CUSTOMER_SUCCESS = 'ENROL_CUSTOMER_SUCCESS';
+const ENROL_CUSTOMER_ERROR = 'ENROL_CUSTOMER_ERROR';
 
 export const getProviders = () => async (dispatch: Dispatch) => {
   try {
@@ -258,6 +263,26 @@ export const getSectors = () => async (dispatch: Dispatch) => {
   }
 };
 
+export const enrolCustomer =
+  (pencomDetails: any) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({ type: ENROL_CUSTOMER_PROCESS });
+      const {
+        data: { data },
+      } = await enrolCustomerEndpoint(pencomDetails);
+      dispatch({
+        type: ENROL_CUSTOMER_SUCCESS,
+        payload: data,
+        stateName: 'pencomAccount',
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ENROL_CUSTOMER_ERROR,
+        payload: error.response.data,
+      });
+    }
+  };
+
 const DEFAULT_STATE = {
   isLoading: false,
   error: {},
@@ -275,6 +300,7 @@ const DEFAULT_STATE = {
   resCities: [],
   employerCities: [],
   nokCities: [],
+  pencomAccount: [],
 };
 
 export const pencomReducer = (

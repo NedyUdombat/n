@@ -58,7 +58,7 @@ const NextOfKinDetailsForm = ({
   };
   const _fields: InputField[] = [
     {
-      type: 'text',
+      type: 'select',
       id: 'nokTitle',
       name: 'nokTitle',
       label: 'Title',

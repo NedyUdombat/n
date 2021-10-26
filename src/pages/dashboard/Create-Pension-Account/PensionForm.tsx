@@ -17,9 +17,11 @@ import EmploymentDetailsForm from '../../../components/create-pension-account-fo
 import NextOfKinDetailsForm from '../../../components/create-pension-account-forms/NextOfKinDetailsForm';
 import CertificateForm from '../../../components/create-pension-account-forms/CertificateForm';
 import SelectPensionProvider from './SelectPensionProvider';
+import Modal from '../../../components/modals/Modal';
 
 /** Icon(s) */
 import ArrowLeft from '../../../assets/icons/arrowLeft.svg';
+import CloseRed from '../../../assets/icons/close_red.svg';
 
 /** Util(s) */
 import { ROUTE_URLS } from '../../../routes/RouteUrls';
@@ -58,6 +60,7 @@ interface PensionFormProps {
 const PensionForm = ({
   location: { pathname },
 }: PensionFormProps): JSX.Element => {
+  const [isModalOpen, setIsOpenModal] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<number>(1);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [showPensionForm, setShowPensionForm] = useState<boolean>(false);
@@ -281,7 +284,43 @@ const PensionForm = ({
   if (showPensionForm) {
     return (
       <section className="create-pension-account pension-form">
-        <InnerPageNavBar pageLogoComponent={true} goBackrouteName="/" />
+        <InnerPageNavBar
+          pageLogoComponent={true}
+          goBackrouteName="function"
+          goBackFunction={() => setIsOpenModal(true)}
+        />
+        <Modal isOpen={isModalOpen} closeModal={() => setIsOpenModal(false)}>
+          <div className="child-modal-content">
+            <img
+              src={CloseRed}
+              alt="Coin Icon"
+              className="modal-primary-icon"
+            />
+            <h4 className="modal-title">Cancel Registration</h4>
+            <p className="details">
+              You are attempting to cancel your registration. If you cancel all
+              inputted information will be erased. Do you want to cancel?
+            </p>
+            <section className="cta-btns">
+              <button
+                type="button"
+                className="close-modal-btn btn"
+                onClick={() => setIsOpenModal(false)}
+              >
+                Go back
+              </button>
+              <Link
+                to={{
+                  pathname: ROUTE_URLS.HOME_PAGE,
+                  state: { from: location.pathname },
+                }}
+                className="modal-link"
+              >
+                <button className="btn cancel-btn">Cancel registration</button>
+              </Link>
+            </section>
+          </div>
+        </Modal>
         <div className="content">
           <ProgressBar
             steps={steps}

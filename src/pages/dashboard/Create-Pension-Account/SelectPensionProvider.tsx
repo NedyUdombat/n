@@ -20,6 +20,7 @@ import {
 
 /** Action(s) */
 import { getProviders } from '../../../store/modules/pencom';
+import { ROUTE_URLS } from '../../../routes/RouteUrls';
 
 /** Type(s) */
 import { RootState } from '../../../store/rootReducer';
@@ -131,7 +132,10 @@ const SelectPensionProvider = ({
 
   return (
     <section className="create-pension-account select-provider">
-      <InnerPageNavBar pageLogoComponent={true} goBackrouteName="/" />
+      <InnerPageNavBar
+        pageLogoComponent={true}
+        goBackrouteName={ROUTE_URLS.HOME_PAGE}
+      />
       {pensionProviders && pensionProviders.length < 1 ? (
         <div className="content">
           <h1 className="title">Sorry!</h1>

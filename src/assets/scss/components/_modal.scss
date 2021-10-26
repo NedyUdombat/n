@@ -37,6 +37,35 @@
         padding: 0;
       }
     }
+
+    .cta-btns {
+      display: flex;
+      width: -webkit-fill-available;
+      justify-content: flex-end;
+
+      .modal-link {
+        width: unset;
+      }
+
+      .close-modal-btn {
+        color: $color-929292;
+        padding: 11px 24px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 26px;
+        margin-right: 8px;
+      }
+
+      .cancel-btn {
+        background-color: $color-dc4437;
+        padding: 11px 24px;
+        width: fit-content;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
   }
 }
 

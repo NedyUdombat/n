@@ -11,12 +11,14 @@ interface InnerPageNavBarPropsTypes {
   pageTitle?: string;
   pageLogoComponent?: boolean;
   goBackrouteName: string;
+  goBackFunction?: () => void;
 }
 
 const InnerPageNavBar = ({
   pageTitle,
   pageLogoComponent,
   goBackrouteName,
+  goBackFunction,
 }: InnerPageNavBarPropsTypes): JSX.Element => (
   <div className="inner-navbar">
     {pageLogoComponent ? (
@@ -24,10 +26,17 @@ const InnerPageNavBar = ({
     ) : (
       <div className="page-title">{pageTitle}</div>
     )}
-    <Link to={goBackrouteName} className="close-link">
-      <span className="close-link-text">Close</span>
-      <img src={closeIcon} alt="Close Icon" className="close-link-icon" />
-    </Link>
+    {goBackrouteName === 'function' ? (
+      <button type="button" onClick={goBackFunction} className="btn close-link">
+        <span className="close-link-text">Close</span>
+        <img src={closeIcon} alt="Close Icon" className="close-link-icon" />
+      </button>
+    ) : (
+      <Link to={goBackrouteName} className="close-link">
+        <span className="close-link-text">Close</span>
+        <img src={closeIcon} alt="Close Icon" className="close-link-icon" />
+      </Link>
+    )}
   </div>
 );
 

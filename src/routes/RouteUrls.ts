@@ -21,6 +21,6 @@ export const ROUTE_URLS = {
   WITHDRAW: '/withdraw-money',
   ADD_MONEY: '/add-money',
   CREATE_PENCOM_ACCOUNT: '/create-pension-account',
-  SELECT_PENSION_PROVIDER: '/select-pension-provider',
+  CREATE_PENCOM_ACCOUNT_SUCCESS: '/create-account-success',
   CREATE_PENSION_FORM: '/pension-registration',
 };

@@ -246,6 +246,52 @@
   }
 }
 
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 154px;
+
+  .success-icon {
+    margin-bottom: 26px;
+    max-height: 60px;
+    max-width: 60px;
+    min-height: 60px;
+    min-width: 60px;
+  }
+
+  .info {
+    color: $black-333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  .form-title {
+    margin-bottom: 8px;
+    color: $black-333;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    margin-bottom: 8px;
+
+    .value {
+      color: $green;
+    }
+  }
+
+  .link {
+    color: $green;
+    text-decoration: none;
+
+    svg {
+      margin-left: 6px;
+    }
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .create-pension-account {
     .content {
@@ -357,7 +403,6 @@
     &.select-provider {
       .form-control-group {
         &.pension-radio {
-
           .form-check {
             width: -webkit-fill-available;
 

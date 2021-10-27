@@ -5,8 +5,8 @@ import React, {
   useEffect,
   MouseEventHandler,
 } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 /** Component(s) */
 import InnerPageNavBar from '../../../components/navbar/InnerPageNavBar';
@@ -22,6 +22,7 @@ import Modal from '../../../components/modals/Modal';
 /** Icon(s) */
 import ArrowLeft from '../../../assets/icons/arrowLeft.svg';
 import CloseRed from '../../../assets/icons/close_red.svg';
+import SuccessIcon from '../../../assets/icons/sucessIcon.svg';
 
 /** Util(s) */
 import { ROUTE_URLS } from '../../../routes/RouteUrls';
@@ -61,6 +62,7 @@ const PensionForm = ({
   location: { pathname },
 }: PensionFormProps): JSX.Element => {
   const [isModalOpen, setIsOpenModal] = useState<boolean>(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<number>(1);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [showPensionForm, setShowPensionForm] = useState<boolean>(false);
@@ -91,8 +93,12 @@ const PensionForm = ({
   const relationships = useSelector(
     (state: RootState) => state.pencom.relationships,
   );
+  const pencomAccount = useSelector(
+    (state: RootState) => state.pencom.pencomAccount,
+  );
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const fetchTitles = useCallback(() => {
     dispatch(getTitles());
@@ -211,7 +217,12 @@ const PensionForm = ({
   const handleSubmitEnrolment: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
 
-    dispatch(enrolCustomer(pencomDetails));
+    dispatch(enrolCustomer(pencomDetails, history));
+
+    if (pencomAccount !== null) {
+      setShowSuccessMessage(true);
+      setShowPensionForm(false);
+    }
   };
 
   const renderForms = () => {
@@ -390,6 +401,14 @@ const PensionForm = ({
                 />
                 Back
               </button>
+
+              <button
+                type="button"
+                className="next-btn"
+                onClick={(e) => handleSubmitEnrolment(e)}
+              >
+                Submit Registration
+              </button>
               <Link
                 to={{
                   pathname: ROUTE_URLS.CREATE_PENSION_FORM,
@@ -402,6 +421,38 @@ const PensionForm = ({
             </div>
           )}
         </footer>
+      </section>
+    );
+  }
+
+  if (showSuccessMessage) {
+    return (
+      <section className="success-container">
+        <div>
+          <img src={SuccessIcon} alt="Success Icon" className="success-icon" />
+          <p className="info">
+            Micro Pension account created! Start saving for the future.
+          </p>
+          <p className="form-title">
+            Your PENCOM number is{' '}
+            <span className="value">{pencomAccount.accountNumber}</span>
+          </p>
+          <Link to={{ pathname: ROUTE_URLS.DASHBOARD_URL }} className="link">
+            Go to Dashboard
+            <svg
+              width="14"
+              height="12"
+              viewBox="0 0 14 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.5303 6.53033C13.8232 6.23744 13.8232 5.76256 13.5303 5.46967L8.75736 0.696699C8.46447 0.403806 7.98959 0.403806 7.6967 0.696699C7.40381 0.989593 7.40381 1.46447 7.6967 1.75736L11.9393 6L7.6967 10.2426C7.40381 10.5355 7.40381 11.0104 7.6967 11.3033C7.98959 11.5962 8.46447 11.5962 8.75736 11.3033L13.5303 6.53033ZM0 6.75H13V5.25H0V6.75Z"
+                fill="#3D663D"
+              />
+            </svg>
+          </Link>
+        </div>
       </section>
     );
   }

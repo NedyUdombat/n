@@ -17,6 +17,9 @@ import {
 /** Type(s) */
 import { Dispatch } from '../../@types/store.type';
 
+/** Util(s) */
+import { ROUTE_URLS } from '../../routes/RouteUrls';
+
 const GET_PROVIDERS_PROCESS = 'GET_PROVIDERS_PROCESS';
 const GET_PROVIDERS_SUCCESS = 'GET_PROVIDERS_SUCCESS';
 const GET_PROVIDERS_ERROR = 'GET_PROVIDERS_ERROR';
@@ -264,7 +267,7 @@ export const getSectors = () => async (dispatch: Dispatch) => {
 };
 
 export const enrolCustomer =
-  (pencomDetails: any) => async (dispatch: Dispatch) => {
+  (pencomDetails: any, history: any) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: ENROL_CUSTOMER_PROCESS });
       const {
@@ -275,6 +278,7 @@ export const enrolCustomer =
         payload: data,
         stateName: 'pencomAccount',
       });
+      history.push(ROUTE_URLS.CREATE_PENCOM_ACCOUNT_SUCCESS);
     } catch (error: any) {
       dispatch({
         type: ENROL_CUSTOMER_ERROR,
@@ -300,7 +304,7 @@ const DEFAULT_STATE = {
   resCities: [],
   employerCities: [],
   nokCities: [],
-  pencomAccount: [],
+  pencomAccount: null,
 };
 
 export const pencomReducer = (
@@ -319,6 +323,7 @@ export const pencomReducer = (
     case GET_INDUSTRIES_PROCESS:
     case GET_EMPLOYERS_PROCESS:
     case GET_EMPLOYMENT_SECTOR_PROCESS:
+    case ENROL_CUSTOMER_PROCESS:
       return {
         ...state,
         isLoading: true,
@@ -334,6 +339,7 @@ export const pencomReducer = (
     case GET_INDUSTRIES_SUCCESS:
     case GET_EMPLOYERS_SUCCESS:
     case GET_EMPLOYMENT_SECTOR_SUCCESS:
+    case ENROL_CUSTOMER_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -350,6 +356,7 @@ export const pencomReducer = (
     case GET_INDUSTRIES_ERROR:
     case GET_EMPLOYERS_ERROR:
     case GET_EMPLOYMENT_SECTOR_ERROR:
+    case ENROL_CUSTOMER_ERROR:
       return {
         ...state,
         isLoading: false,

@@ -1,12 +1,13 @@
-import express, { static } from 'express';
-import { join, resolve } from 'path';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const express = require('express');
+const path = require('path');
 
 const app = express();
 
-app.use(static(join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('*', (req, res) => {
-  res.sendFile(resolve(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 const port = process.env.PORT || 8081;

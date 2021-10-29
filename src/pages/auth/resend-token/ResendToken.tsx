@@ -99,8 +99,8 @@ const ResendToken = (): JSX.Element => {
       <form className="mx-auto auth forgot-password">
         <p className="form-title">Didn&apos;t Get Code?</p>
         <p className="form-subtitle">
-          Enter your email address below. A new code will be sent to your
-          address.
+          Enter your Phone Number below. A new code will be sent to your phone
+          number.
         </p>
 
         <Input

@@ -1,7 +1,7 @@
 export const ROUTE_URLS = {
   /** Auth */
-  REGISTRATION_URL: '/register',
-  AUTHENTICATION_URL: '/authenticate',
+  REGISTRATION_URL: '/signup',
+  AUTHENTICATION_URL: '/signin',
   VERIFICATION_URL: '/verify',
   RESEND_TOKEN_URL: '/resend-token',
   FORGOT_PASSWORD_URL: '/forgot-password',

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 /** Component(s) */
 import Input from '../input/Input';
+
+/** Type(s) */
+import { User } from '../../@types/user.type';
 
 interface InputField {
   type: string;
@@ -11,32 +14,57 @@ interface InputField {
   placeholder: string;
   value: string;
   disabled: boolean;
-  onInputChange: () => null;
+  onInputChange: (e: any) => void;
   required: boolean;
 }
 
-const Profile = (): JSX.Element => {
+interface ProfileProps {
+  user: User | any;
+}
+
+const Profile = ({ user }: ProfileProps): JSX.Element => {
+  const [userDetails, setUserDetails] = useState({});
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [address, setAddress] = useState('');
+  const [userPencom, setUserPencom] = useState('');
+
+  useEffect(() => {
+    if (Object.keys(user).length > 0) {
+      setFirstName(user.firstName ? user.firstName : '');
+      setLastName(user.lastName ? user.lastName : '');
+      setEmail(user.email ? user.email : '');
+      setPhoneNumber(user.phoneNumber ? user.phoneNumber : '');
+      setDateOfBirth(user.dateOfBirth ? user.dateOfBirth : '');
+      setAddress(user.address ? user.address : '');
+      setUserPencom(user.pencoms[0] ? user.pencoms[0].accountNumber : '');
+    }
+  }, [user]);
+
   const _fields: InputField[] = [
     {
       type: 'text',
-      id: 'firstname',
-      name: 'firstname',
+      id: 'firstName',
+      name: 'firstName',
       label: 'First Name',
       placeholder: 'First Name',
-      value: '',
+      value: firstName,
       disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setFirstName(e.target.value),
       required: false,
     },
     {
       type: 'text',
-      id: 'lastname',
-      name: 'lastname',
+      id: 'lastName',
+      name: 'lastName',
       label: 'Last Name',
       placeholder: 'Last Name',
-      value: '',
+      value: lastName,
       disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setLastName(e.target.value),
       required: false,
     },
     {
@@ -45,31 +73,31 @@ const Profile = (): JSX.Element => {
       name: 'email',
       label: 'Email',
       placeholder: 'john@doe.com',
-      value: '',
+      value: email,
       disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setEmail(e.target.value),
       required: false,
     },
     {
       type: 'tel',
-      id: 'phone',
-      name: 'phone',
+      id: 'phoneNumber',
+      name: 'phoneNumber',
       label: 'Phone Number',
       placeholder: '',
-      value: '',
+      value: phoneNumber,
       disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setPhoneNumber(e.target.value),
       required: false,
     },
     {
       type: 'date',
-      id: 'dob',
-      name: 'dob',
+      id: 'dateOfBirth',
+      name: 'dateOfBirth',
       label: 'Date of birth',
       placeholder: 'Date of birth',
-      value: '',
+      value: dateOfBirth,
       disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setDateOfBirth(e.target.value),
       required: false,
     },
     {
@@ -78,31 +106,9 @@ const Profile = (): JSX.Element => {
       name: 'address',
       label: 'Address',
       placeholder: 'Address',
-      value: '',
+      value: address,
       disabled: false,
-      onInputChange: () => null,
-      required: false,
-    },
-    {
-      type: 'text',
-      id: 'country',
-      name: 'country',
-      label: 'Country',
-      placeholder: '',
-      value: '',
-      disabled: false,
-      onInputChange: () => null,
-      required: false,
-    },
-    {
-      type: 'text',
-      id: 'state',
-      name: 'state',
-      label: 'State',
-      placeholder: '',
-      value: '',
-      disabled: false,
-      onInputChange: () => null,
+      onInputChange: (e) => setAddress(e.target.value),
       required: false,
     },
     {
@@ -111,12 +117,14 @@ const Profile = (): JSX.Element => {
       name: 'pencom',
       label: 'PENCOM number',
       placeholder: '',
-      value: '',
-      disabled: false,
-      onInputChange: () => null,
+      value: userPencom,
+      disabled: true,
+      onInputChange: (e) => setUserPencom(e.target.value),
       required: false,
     },
   ];
+
+  console.log('profile', user?.pencoms[0].accountNumber);
 
   return (
     <section className="profile-section">

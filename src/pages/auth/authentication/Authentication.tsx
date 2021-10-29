@@ -16,10 +16,10 @@ import Input from '../../../components/input/Input';
 
 /** Util(s) */
 import { ROUTE_URLS } from '../../../routes/RouteUrls';
+import { emailRegex, passwordSchema } from '../../../utils/validators';
 
 /** Action(s) */
 import { authenticate } from '../../../store/modules/auth';
-import { emailRegex, passwordSchema } from '../../../utils/validators';
 
 interface ErrorsType {
   [propertyName: string]: string | null;

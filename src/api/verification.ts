@@ -1,4 +1,6 @@
 import { http } from './client';
+
+/** Type(s) */
 import { Code } from '../@types/token.type';
 
 export const verificationEndpoint = async (data: Code) =>

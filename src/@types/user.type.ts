@@ -13,4 +13,6 @@ export interface User {
   createdAt?: string;
   updatedAt?: string;
   pencoms?: any[];
+  dateOfBirth?: string;
+  address?: string;
 }

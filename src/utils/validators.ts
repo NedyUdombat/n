@@ -17,6 +17,8 @@ passwordSchema
   .spaces()
   .has()
   .digits()
+  .has()
+  .symbols(1)
   .is()
   .not()
   .oneOf([

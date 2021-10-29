@@ -4,6 +4,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 /** Component(s) */
 import Input from '../input/Input';
@@ -16,6 +18,9 @@ import { passwordSchema } from '../../utils/validators';
 
 /** Type(s) */
 import { ErrorsType } from '../../@types/error.type';
+
+/** Action(s) */
+import { changePassword } from '../../store/modules/auth';
 
 interface InputField {
   type: string;
@@ -45,6 +50,9 @@ const Security = (): JSX.Element => {
     newPassword: null,
     confirmNewPassword: null,
   });
+
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const errorHandler = (
     field: string,
@@ -80,14 +88,6 @@ const Security = (): JSX.Element => {
   }, [newPassword]);
 
   useEffect(() => {
-    if (validateForm(errors)) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  }, [errors]);
-
-  useEffect(() => {
     const passwordErrors = passwordSchema.validate(confirmNewPassword);
     if (confirmNewPassword !== '') {
       errorHandler(
@@ -99,6 +99,14 @@ const Security = (): JSX.Element => {
       errorHandler('confirmNewPassword', passwordErrors, 'valid');
     }
   }, [confirmNewPassword]);
+
+  useEffect(() => {
+    if (validateForm(errors)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [errors]);
 
   const _passwordFields: InputField[] = [
     {
@@ -163,6 +171,13 @@ const Security = (): JSX.Element => {
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
+
+    dispatch(
+      changePassword(
+        { currentPassword, newPassword, confirmNewPassword },
+        history,
+      ),
+    );
   };
 
   return (
@@ -171,9 +186,8 @@ const Security = (): JSX.Element => {
         <p className="form-title">Change password</p>
         <div className="security-password-form-control-group">
           {_passwordFields.map((field) => (
-            <>
+            <div key={field.id}>
               <Input
-                key={field.id}
                 type={field.type}
                 id={field.id}
                 name={field.name}
@@ -193,7 +207,7 @@ const Security = (): JSX.Element => {
               {field.value.length > 0 && (
                 <PasswordStrengthIndicator password={field.value} />
               )}
-            </>
+            </div>
           ))}
         </div>
 

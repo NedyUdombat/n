@@ -6,6 +6,7 @@ import {
   authenticationEndpoint,
   forgotPasswordEndpoint,
   resetPasswordEndpoint,
+  changePasswordEndpoint,
 } from '../../api/auth';
 import { setToken } from '../../api/helpers';
 
@@ -33,6 +34,10 @@ const FORGOT_PASSWORD_ERROR = 'FORGOT_PASSWORD_ERROR';
 const RESET_PASSWORD_PROCESS = 'RESET_PASSWORD_PROCESS';
 const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 const RESET_PASSWORD_ERROR = 'RESET_PASSWORD_ERROR';
+
+const CHANGE_PASSWORD_PROCESS = 'CHANGE_PASSWORD_PROCESS';
+const CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
+const CHANGE_PASSWORD_ERROR = 'CHANGE_PASSWORD_ERROR';
 
 export const register =
   (userData: User, history: any) => async (dispatch: Dispatch) => {
@@ -85,10 +90,8 @@ export const resetPassword =
   (userData: Unknown) => async (dispatch: Dispatch) => {
     try {
       dispatch({ type: RESET_PASSWORD_PROCESS });
-      const {
-        data: { data },
-      } = await resetPasswordEndpoint(userData);
-      dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data });
+      await resetPasswordEndpoint(userData);
+      dispatch({ type: RESET_PASSWORD_SUCCESS });
     } catch (error: any) {
       toast.error(
         `${
@@ -98,6 +101,25 @@ export const resetPassword =
         }`,
       );
       dispatch({ type: RESET_PASSWORD_ERROR, payload: error.response.data });
+    }
+  };
+
+export const changePassword =
+  (userData: Unknown, history: any) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({ type: CHANGE_PASSWORD_PROCESS });
+      await changePasswordEndpoint(userData);
+      dispatch({ type: CHANGE_PASSWORD_SUCCESS });
+      history.go(0);
+    } catch (error: any) {
+      toast.error(
+        `${
+          error.response.data.data
+            ? error.response.data.data.message
+            : error.response.data.message
+        }`,
+      );
+      dispatch({ type: CHANGE_PASSWORD_ERROR, payload: error.response.data });
     }
   };
 
@@ -116,6 +138,7 @@ export const authReducer = (
     case AUTHENTICATION_PROCESS:
     case FORGOT_PASSWORD_PROCESS:
     case RESET_PASSWORD_PROCESS:
+    case CHANGE_PASSWORD_PROCESS:
       return {
         ...state,
         isLoading: true,
@@ -129,6 +152,7 @@ export const authReducer = (
       };
     case FORGOT_PASSWORD_SUCCESS:
     case RESET_PASSWORD_SUCCESS:
+    case CHANGE_PASSWORD_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -137,6 +161,7 @@ export const authReducer = (
     case AUTHENTICATION_ERROR:
     case FORGOT_PASSWORD_ERROR:
     case RESET_PASSWORD_ERROR:
+    case CHANGE_PASSWORD_ERROR:
       return {
         ...state,
         isLoading: false,

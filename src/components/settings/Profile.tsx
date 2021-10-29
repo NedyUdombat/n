@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { MouseEventHandler, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 /** Component(s) */
 import Input from '../input/Input';
 
 /** Type(s) */
 import { User } from '../../@types/user.type';
+import { updateUser } from '../../store/modules/user';
 
 interface InputField {
   type: string;
@@ -31,6 +33,10 @@ const Profile = ({ user }: ProfileProps): JSX.Element => {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [address, setAddress] = useState('');
   const [userPencom, setUserPencom] = useState('');
+  const [disabled, setDisabled] = useState<boolean>(true);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     if (Object.keys(user).length > 0) {
@@ -126,6 +132,24 @@ const Profile = ({ user }: ProfileProps): JSX.Element => {
 
   console.log('profile', user?.pencoms[0].accountNumber);
 
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      updateUser(
+        {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          dateOfBirth,
+          address,
+        },
+        history,
+      ),
+    );
+  };
+
   return (
     <section className="profile-section">
       <form className="profile-form">
@@ -147,7 +171,13 @@ const Profile = ({ user }: ProfileProps): JSX.Element => {
         </div>
 
         <div className="submit-btn-section">
-          <button className="btn submit-btn disabled">Save changes</button>
+          <button
+            className={`btn submit-btn${disabled === true ? ` disabled` : ``}`}
+            disabled={disabled}
+            onClick={handleSubmit}
+          >
+            Save changes
+          </button>
         </div>
       </form>
     </section>

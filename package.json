@@ -1,8 +1,10 @@
 {
-  "name": "fe-react-redux",
+  "name": "awabah",
+  "homepage": "https://awabahng.com",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
+  "main": "server.js",
   "jest": {
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",
